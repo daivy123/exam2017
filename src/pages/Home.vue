@@ -12,8 +12,8 @@
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
-    <v-foot color="#aaa" />
-    <img src="../assets/img/main.jpg" class="mainbg" />
+    <!-- <v-foot color="#aaa" /> -->
+    <!-- <img src="../assets/img/main.jpg" class="mainbg" /> -->
   </div>
 </template>
 <script>

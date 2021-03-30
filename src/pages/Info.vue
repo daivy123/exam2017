@@ -29,44 +29,16 @@
         @click.native="showAnswer"
         >查看正确答案</x-button
       >
-      <!-- <x-button class="wrapper" @click.native="scoreList">得分排行榜</x-button> -->
-      <!-- <x-button class="wrapper" @click.native="jump('errlist')">我的错题集</x-button> -->
-
-      <div class="marquee" style="margin-top: 20px;">
+      <div class="marquee" style="margin-top: 20px">
         <marquee scrollamount="10"
           >当前时间:{{ clock }} 当前时间:{{ clock }} 当前时间:{{
             clock
           }}</marquee
         >
       </div>
-      <div class="item">
-        <p class="title" :style="!isValid ? 'color:#e23' : ''">
-          身份校验：{{ isValid ? "通过" : "未通过" }}
-        </p>
-
-        <div class="row">
-          <div class="column" style="align-items: flex-start;">
-            <p>姓名：{{ dbUserInfo.username }}</p>
-            <p>部门：{{ dbUserInfo.deptname }}</p>
-            <!-- <p>卡号：{{ dbUserInfo.cardno }}</p> -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <div style="margin: 10px 0;">1.本机微信</div>
-            <img style="margin: 10px 0;" :src="userInfo.headimgurl" alt />
-            <div style="font-weight: bold;">{{ userInfo.nickname }}</div>
-          </div>
-          <!-- <div class="column">
-            <div style="margin:10px 0">2.答题人微信</div>
-            <img style="margin:10px 0" :src="dbUserInfo.headimgurl" alt />
-            <div style="font-weight:bold;">{{dbUserInfo.nickname}}</div>
-          </div>-->
-        </div>
-      </div>
     </div>
     <confirm v-model="showConfirm" title="系统提示" @on-confirm="onConfirm">
-      <p style="text-align: center;">
+      <p style="text-align: center">
         是否要清空活动数据?确认后所有人的答题信息都将清除，请谨慎操作
       </p>
     </confirm>

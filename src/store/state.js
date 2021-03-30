@@ -26,9 +26,9 @@ const state = {
   wxUrl: "//api.cbpc.ltd/",
   tips: "",
   sport: {
-    id: 40,
-    name: "招标与集中采购知识测试",
-    orgname: "成都印钞有限公司", // 机构名
+    id: 41,
+    name: "宣传贯彻《条例》 加强基金监管",
+    orgname: "", // 机构名
     slogan: "", // 口号
 
     // randAnswer: true, //答案随机化
@@ -36,10 +36,10 @@ const state = {
 
     questionNums, // 抽题数量
     perScore: 4, // 每题得分
-    useDept: true,
+    useDept: false,
     isOnline: false, //实际活动
     showDocument: false,
-    loadWXInfo: true, // 抽奖活动将载入用户个人信息
+    loadWXInfo: false, // 抽奖活动将载入用户个人信息
     doLottery: false, // 是否参与抽奖
     uid: 0,
     userName: "",
@@ -53,8 +53,8 @@ const state = {
     // 最小抽奖得分
     minPrizeScore: 80,
     testMode: false,
-    startDate: "2020-04-04",
-    endDate: "2020-12-29 00:00:00",
+    startDate: "2021-03-04",
+    endDate: "2021-12-29 00:00:00",
     // 得分是否累加
     stackMode: true,
     // 记录每次答题得分
@@ -62,8 +62,8 @@ const state = {
     readMaxScore: true,
     readSumScore: true,
     maxAnswerLength, // 最长答题时间，4分钟
-    validNoncer:false,
-    validQR: true, // 校验是否为二维码进入
+    validNoncer: false,
+    validQR: false, // 校验是否为二维码进入
   },
   paperInit: false,
   peopleCount: 0,

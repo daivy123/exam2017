@@ -425,34 +425,37 @@ export const addCbpmPurchaseUser = (params) =>
   });
 
 /**
+ *   @database: { 微信开发 }
+ *   @desc:     { 添加数据 }
+ */
+export const addAnswerUser = (params) =>
+  axios({
+    url: "/404/4991ad22c5.json",
+    params,
+  }).then(({ data: [{ id }] }) => id);
+
+/**
 *   @database: { 微信开发 }
 *   @desc:     { 招标采购 登录 } 
     const { sid, username, dept_name,cardno } = params;
 */
 export const getCbpmPurchaseUser = async (params) => {
   let res = await axios({
-    url: "/345/30eaf002b5.json",
+    url: "/403/17b23a53d7.json",
     params,
   });
-  // if (res.rows > 0) {
-  //   return res;
-  // }
-  // // 没有信息，添加
-  // let data = {
-  //   answer_times: 0,
-  //   score: 0,
-  //   time_length: 0,
-  // };
-
-  // // 添加信息然后登录
-  // res = await addCbpmPurchaseUser(params);
-
-  // res.data[0].uid = res.data[0].id;
-  // res.data[0] = {
-  //   ...data,
-  //   ...res.data[0],
-  // };
-  return res;
+  if (res.rows > 0) {
+    return res;
+  }
+  let uid = await addAnswerUser(params);
+  return {
+    data: [
+      {
+        uid,
+        answer_times: 0,
+      },
+    ],
+  };
 };
 
 /**

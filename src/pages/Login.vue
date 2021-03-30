@@ -9,13 +9,13 @@
         placeholder="点击此处输入姓名"
       ></x-input>
       <x-input
-        title="卡号"
+        title="手机号"
         required
         type="number"
-        :max="7"
+        :max="11"
         name="cardNo"
         v-model="sport.cardNo"
-        placeholder="点击此处输入卡号"
+        placeholder="点击此处输入手机号"
         keyboard="number"
       ></x-input>
       <template v-if="sport.useDept">
@@ -114,7 +114,7 @@ export default {
     login: async function () {
       let params = {
         sid: this.sport.id,
-        card_no: this.sport.cardNo,
+        phone: this.sport.cardNo,
         username: this.sport.userName,
         dept_name: this.sport.dpt[0],
         nickname: this.userInfo.nickname,
@@ -133,7 +133,7 @@ export default {
       // console.log(obj.answer_times);
       // 登录成功
       this.sport.isLogin = true;
-      this.sport.curTimes = parseInt(obj.answer_times);
+      this.sport.curTimes = parseInt(obj.answer_times || "1");
 
       this.sport.uid = obj.uid;
       this.sport.curScore = obj.score;
@@ -158,7 +158,6 @@ export default {
         this.jump("score");
         return;
       }
-
       if (this.sport.showDocument) {
         this.jump("doc");
       } else {
