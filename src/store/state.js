@@ -27,7 +27,7 @@ const state = {
   tips: "",
   sport: {
     id: 41,
-    name: "宣传贯彻《条例》 加强基金监管",
+    name: "武侯区关于“宣传贯彻《条例》 加强基金监管”知识竞答",
     orgname: "", // 机构名
     slogan: "", // 口号
 
