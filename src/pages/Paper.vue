@@ -88,17 +88,17 @@ let questiones = util.getPaperData(R.clone(questionJSON), {
   randAnswer: false, // 答题不随机
   randomQuestion: true, // 题目随机
 });
-let questionList = [];
 
-let curPaper = window.localStorage.getItem(key.curPaper);
+let curPaper = questiones.slice(0, questionNums);
+let questionList = curPaper;
 
-if (curPaper == null) {
-  curPaper = questiones.slice(0, questionNums);
-  questionList = curPaper;
-  window.localStorage.setItem(key.curPaper, JSON.stringify(curPaper));
-} else {
-  questionList = JSON.parse(curPaper);
-}
+// if (curPaper == null) {
+//   curPaper = questiones.slice(0, questionNums);
+//   questionList = curPaper;
+//   window.localStorage.setItem(key.curPaper, JSON.stringify(curPaper));
+// } else {
+//   questionList = JSON.parse(curPaper);
+// }
 
 // 快速测试
 // questionList = questionList.slice(0, 3);
@@ -172,6 +172,8 @@ export default {
       let score = 0;
       this.errorQuestion = [];
       // 每题得分
+
+      console.log(this.answerList, this.questionList);
 
       this.answerList.forEach((item, i) => {
         let curQuestion = this.questionList[i];

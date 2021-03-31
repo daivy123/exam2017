@@ -2,42 +2,21 @@
   <div>
     <!-- <v-header/> -->
     <div class="content">
-      <h3 v-if="showDept" style="margin-top: 30px;">
-        1.各单位平均得分
-      </h3>
-      <div class="dept-score" :class="{ hideSome: !isShowFull }">
-        <ul
-          v-if="showDept"
-          class="dept-rate"
-          :class="{ hideHalf: !isShowFull }"
-        >
-          <li
-            class="dept-detail"
-            v-for="({ avg_score, rate, user_dpt }, i) in depts"
-            :key="i"
-          >
-            <span>{{ i + 1 }}.{{ user_dpt }}</span>
-            <span>{{ avg_score }}分</span>
-            <!-- <span>{{ rate }}%</span> -->
-          </li>
-        </ul>
-        <div :class="{ hideButton: isShowFull }" class="btn-showall">
-          <x-button @click.native="showAll">显示全部</x-button>
-        </div>
-      </div>
-      <h3>2.得分排名(参与人数:{{ total }})</h3>
+      <h3>得分排名(参与人数:{{ total }})</h3>
       <ul class="dept-rate">
         <li
-          v-for="({
-            user_name,
-            user_dpt,
-            score,
-            time_length,
-            avatar,
-            answer_times,
-            total_time,
-          },
-          i) in users"
+          v-for="(
+            {
+              user_name,
+              user_dpt,
+              score,
+              time_length,
+              avatar,
+              answer_times,
+              total_time,
+            },
+            i
+          ) in users"
           :key="i"
         >
           <img class="avatar" :src="avatar" alt="user_name" />
@@ -58,7 +37,7 @@
         </li>
       </ul>
     </div>
-    <v-foot color="#333" />
+    <!-- <v-foot color="#333" /> -->
   </div>
 </template>
 
@@ -94,23 +73,7 @@ export default {
       // console.log("show full");
       this.isShowFull = !this.isShowFull;
     },
-    getDeptRatio() {
-      if (this.sport.id != 35) {
-        db[
-          this.sport.readSumScore
-            ? "getCbpcSportMainByDept2"
-            : this.sport.stackMode
-            ? "getCbpcSportMainByDept"
-            : "getCbpcSportDeptByMaxScore"
-        ](this.sport.id).then(({ data }) => {
-          this.depts = data;
-        });
-      } else {
-        db.getCbpcSport2020Purchase(this.sport.id).then(({ data }) => {
-          this.depts = data;
-        });
-      }
-    },
+
     getScoreList() {
       if (this.sport.id == 35) {
         db.getCbpcSport2020ScorePurchase(this.sport.id).then(({ data }) => {
@@ -148,9 +111,6 @@ export default {
       });
     },
     init() {
-      if (!FemaleSport) {
-        this.getDeptRatio();
-      }
       this.getScoreList();
       this.getTotal();
     },

@@ -208,7 +208,7 @@ export const getCbpcSportMainByDept2 = (sid) =>
  */
 export const getCbpcSportMainByUser = async (params) =>
   await axios({
-    url: "/284/1899350f92.json",
+    url: "/405/d648790a44.json",
     params,
   }).then((res) => {
     res.data = res.data.map((item) => {
@@ -475,7 +475,7 @@ export const getCbpcSport2020Purchase = (sid) =>
  */
 export const getCbpcSport2020ScorePurchase = (sid) =>
   axios({
-    url: "/323/1bd3740181.json",
+    url: "/405/d648790a44.json",
     params: {
       sid,
     },
