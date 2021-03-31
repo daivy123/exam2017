@@ -52,7 +52,7 @@ const state = {
     curTimeLength: 0, //当前答题时间
     // 最小抽奖得分
     minPrizeScore: 80,
-    testMode: true,
+    testMode: false,
     startDate: "2021-03-04",
     endDate: "2021-12-29 00:00:00",
     // 得分是否累加

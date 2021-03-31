@@ -1,26 +1,41 @@
 <template>
   <div>
-    <div class="section content" v-for="(question,i) of questionList" :key="question.id">
-      <div style="position:relative;margin-top:50px;">
-        <div class="qa-num">{{i+1}}/{{questionList.length}}</div>
+    <div
+      class="section content"
+      v-for="(question, i) of questionList"
+      :key="question.id"
+    >
+      <div style="position: relative; margin-top: 50px">
+        <div class="qa-num">{{ i + 1 }}/{{ questionList.length }}</div>
         <div class="qa-body">
           <checklist
-            v-if="question.answer.length>1"
+            v-if="question.answer.length > 1"
             label-position="left"
-            :title="`${question.title}(正确答案:${question.answerText.join('、')})`"
+            :title="`${question.title}(正确答案:${question.answerText.join(
+              '、'
+            )})`"
             required
             disabled
             :options="question.option"
             v-model="question.answer"
           ></checklist>
-          <group v-else :title="`${question.title}(正确答案:${question.answerText.join('、')})`">
-            <radio :options="question.option" disabled v-model="question.answer[0]"></radio>
+          <group
+            v-else
+            :title="`${question.title}(正确答案:${question.answerText.join(
+              '、'
+            )})`"
+          >
+            <radio
+              :options="question.option"
+              disabled
+              v-model="question.answer[0]"
+            ></radio>
           </group>
         </div>
       </div>
-      <div class="submit" v-if="i==questionList.length-1">
+      <!-- <div class="submit" v-if="i==questionList.length-1">
         <x-button type="primary" @click.native="reload">重新答题</x-button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -41,17 +56,17 @@ export default {
     Group,
     Radio,
     Checklist,
-    XButton
+    XButton,
   },
   data() {
     return {
       toast: {
         show: false,
-        msg: ""
+        msg: "",
       },
       answerList: [],
       isCompleted: false,
-      questionList: []
+      questionList: [],
     };
   },
   computed: {
@@ -62,22 +77,22 @@ export default {
       },
       set(val) {
         this.$store.commit("setSport", val);
-      }
+      },
     },
     url() {
       return window.location.href.split("#")[0];
-    }
+    },
   },
   methods: {
     prepareData() {
-      let getAnswer = a => ["A", "B", "C", "D", "E", "F", "G"][a];
+      let getAnswer = (a) => ["A", "B", "C", "D", "E", "F", "G"][a];
       console.log(questionJSON, this.error_detail);
       this.questionList = util
         .getPaperData(
           questionJSON.filter((item, id) => this.error_detail.includes(id)),
           { randomAnswer: false, randomQuestion: false }
         )
-        .map(item => {
+        .map((item) => {
           item.answer =
             typeof item.answer == "number" ? [item.answer] : item.answer;
           item.answerText = item.answer.map(getAnswer);
@@ -92,10 +107,10 @@ export default {
       let e = window.localStorage.getItem("error_detail");
       if (e != null) {
         this.$store.commit("setStore", {
-          error_detail: e.split(",").map(item => parseInt(item))
+          error_detail: e.split(",").map((item) => parseInt(item)),
         });
       }
-    }
+    },
   },
   mounted() {
     // if (!this.sport.isLogin) {
@@ -104,7 +119,7 @@ export default {
     this.getErrDetail();
     document.title = this.sport.name; // + "微信答题活动";
     this.prepareData();
-  }
+  },
 };
 </script>
 <style scoped lang="less">
