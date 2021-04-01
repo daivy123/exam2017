@@ -2,9 +2,7 @@
   <div>
     <!-- <v-header/> -->
     <div class="content">
-      <h3 v-if="showDept" style="margin-top: 30px;">
-        1.各单位平均得分
-      </h3>
+      <h3 v-if="showDept" style="margin-top: 30px">1.各单位平均得分</h3>
       <div class="dept-score" :class="{ hideSome: !isShowFull }">
         <ul
           v-if="showDept"
@@ -28,16 +26,18 @@
       <h3>2.得分排名(参与人数:{{ total }})</h3>
       <ul class="dept-rate">
         <li
-          v-for="({
-            user_name,
-            user_dpt,
-            score,
-            time_length,
-            avatar,
-            answer_times,
-            total_time,
-          },
-          i) in users"
+          v-for="(
+            {
+              user_name,
+              user_dpt,
+              score,
+              time_length,
+              avatar,
+              answer_times,
+              total_time,
+            },
+            i
+          ) in users"
           :key="i"
         >
           <img class="avatar" :src="avatar" alt="user_name" />
@@ -95,7 +95,7 @@ export default {
       this.isShowFull = !this.isShowFull;
     },
     getDeptRatio() {
-      if (this.sport.id != 35) {
+      if (this.sport.id != 42) {
         db[
           this.sport.readSumScore
             ? "getCbpcSportMainByDept2"
@@ -112,7 +112,7 @@ export default {
       }
     },
     getScoreList() {
-      if (this.sport.id == 35) {
+      if (this.sport.id == 42) {
         db.getCbpcSport2020ScorePurchase(this.sport.id).then(({ data }) => {
           this.users = data.map((item) => {
             let { total_time } = item;

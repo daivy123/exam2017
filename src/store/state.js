@@ -25,7 +25,7 @@ const state = {
   wxUrl: "//api.cbpc.ltd/",
   tips: "",
   sport: {
-    id: 35,
+    id: 42,
     name: "招标与集中采购知识题库",
     orgname: "中国印钞造币总公司", // 机构名
     slogan: "", // 口号
