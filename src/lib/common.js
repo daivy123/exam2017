@@ -122,25 +122,25 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     });
   }
 
-  if (!isSafeTest2020) {
-    return randomQuestions.map((item) => {
-      item.option = item.option.map((value, key) => {
-        return {
-          key,
-          value: alphaArr[key] + "、" + value,
-        };
-      });
-      return item;
-    });
-  }
+  // if (!isSafeTest2020) {
+  //   return randomQuestions.map((item) => {
+  //     item.option = item.option.map((value, key) => {
+  //       return {
+  //         key,
+  //         value: alphaArr[key] + "、" + value,
+  //       };
+  //     });
+  //     return item;
+  //   });
+  // }
 
   if (questionJSON.length !== randomQuestions.length) {
     return randomQuestions;
   }
 
-  let judge = randomQuestions.slice(0, 50);
-  let singleChoice = randomQuestions.slice(50, 165);
-  let multiple = randomQuestions.slice(165, 225);
+  let judge = randomQuestions.slice(0, 54);
+  let singleChoice = randomQuestions.slice(54, 203);
+  let multiple = randomQuestions.slice(203, 258);
 
   singleChoice = randomArr(singleChoice);
   multiple = randomArr(multiple);
@@ -153,8 +153,8 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
   let res = R.clone([...judge, ...singleChoice, ...multiple]);
 
   // console.log(res, randomAnswer(res));
-
-  return randomAnswer(res).map((item) => {
+  // randomAnswer(res).map(item=>)
+  return res.map((item) => {
     item.option = item.option.map((value, key) => {
       return {
         key,
