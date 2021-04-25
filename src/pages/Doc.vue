@@ -179,7 +179,7 @@ export default {
       });
     },
     handleQuestion(item) {
-      let options = ["A", "B", "C", "D", "E"];
+      let options = ["A", "B", "C", "D", "E", "F", "G", "H"];
       let answer =
         item.answer.length > 1
           ? item.answer
@@ -215,7 +215,7 @@ export default {
       return title;
     },
     handleSrcQuestion(item) {
-      let options = ["A", "B", "C", "D", "E"];
+      let options = ["A", "B", "C", "D", "E", "F", "G", "H"];
       let answer = item.answer.map((idx) => options[idx]).join("、");
 
       let title = item.title
