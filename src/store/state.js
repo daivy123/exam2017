@@ -26,7 +26,7 @@ const state = {
   tips: "",
   sport: {
     id: 42,
-    name: "招标与集中采购知识题库",
+    name: "行业评标专家专业测试题库",
     orgname: "中国印钞造币总公司", // 机构名
     slogan: "", // 口号
 
