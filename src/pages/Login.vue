@@ -38,9 +38,9 @@
           <span v-if="notStart">(活动未开始)</span>
           <span v-if="isEnd">(活动已结束)</span>
         </x-button>
-        <x-button @click.native="clearCache"> 清除缓存 </x-button>
+        <!-- <x-button @click.native="clearCache"> 清除缓存 </x-button> -->
         <!-- <x-button @click.native="jump('errlist')">我的错题集</x-button> -->
-        <!-- <x-button @click.native="jump('score')">排行榜</x-button> -->
+        <x-button @click.native="jump('score')">排行榜</x-button>
         <!-- <x-button @click.native="jump('study')">知识学习</x-button> -->
       </div>
     </group>

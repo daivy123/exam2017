@@ -37,7 +37,8 @@ const state = {
     perScore: 4, // 每题得分
     useDept: true,
     isOnline: false, //实际活动
-    showDocument: true,
+    // showDocument: true,
+    showDocument: false,
     loadWXInfo: true, // 抽奖活动将载入用户个人信息
     doLottery: false, // 是否参与抽奖
     uid: 0,

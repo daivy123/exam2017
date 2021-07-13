@@ -3,6 +3,7 @@
     <!-- <v-header/> -->
     <div class="content">
       <h3 v-if="showDept" style="margin-top: 30px">1.各单位平均得分</h3>
+      <p v-if="showDept">(按专家最高分计算)</p>
       <div class="dept-score" :class="{ hideSome: !isShowFull }">
         <ul
           v-if="showDept"
@@ -23,7 +24,8 @@
           <x-button @click.native="showAll">显示全部</x-button>
         </div>
       </div>
-      <h3>2.得分排名(参与人数:{{ total }})</h3>
+      <h3>2.得分排名(参与总人数:{{ total }})</h3>
+      <p>(按专家最高得分、答题次数、答题时长排名)</p>
       <ul class="dept-rate">
         <li
           v-for="(
@@ -48,7 +50,7 @@
             </div>
             <div>
               <p>
-                总分:{{ score }}分
+                最高分:{{ score }}
                 <!-- (<span class="bold">{{answer_times}}</span>次) -->
               </p>
               <p>{{ total_time }}</p>
@@ -106,14 +108,14 @@ export default {
           this.depts = data;
         });
       } else {
-        db.getCbpcSport2020Purchase(this.sport.id).then(({ data }) => {
+        db.getCbpcSport2020AvgScore(this.sport.id).then(({ data }) => {
           this.depts = data;
         });
       }
     },
     getScoreList() {
       if (this.sport.id == 42) {
-        db.getCbpcSport2020ScorePurchase(this.sport.id).then(({ data }) => {
+        db.getCbpcSport2020ScorePurchaseMax(this.sport.id).then(({ data }) => {
           this.users = data.map((item) => {
             let { total_time } = item;
             return item;
