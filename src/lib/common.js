@@ -112,8 +112,9 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     return dist;
   }
 
-  let singleChoice = dist.slice(0, 200);
-  let multiple = dist.slice(200, 240);
+  let singleChoice = dist.slice(0, 50);
+  // let multiple = dist.slice(200, 240);
+  let multiple = dist.slice(50, 75);
   let judge = dist.slice(240, 300);
 
   singleChoice = randomArr(singleChoice);
