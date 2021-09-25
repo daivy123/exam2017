@@ -17,10 +17,11 @@
         <picker :data="dptList" v-model="sport.dpt"></picker>
       </template>
       <div class="btn">
-        <x-button :disabled="isEnd||notStart||!shouldCommit" type="primary" @click.native="login">
+        <!-- <x-button :disabled="isEnd||notStart||!shouldCommit" type="primary" @click.native="login"> -->
+          <x-button  type="primary" @click.native="login">
           开始答题
-          <span v-if="notStart">(活动未开始)</span>
-          <span v-if="isEnd">(活动已结束)</span>
+          <!-- <span v-if="notStart">(活动未开始)</span>
+          <span v-if="isEnd">(活动已结束)</span> -->
         </x-button>
         <!-- <x-button @click.native="jump('errlist')">我的错题集</x-button> -->
         <!-- <x-button @click.native="jump('score')">排行榜</x-button> -->
@@ -58,6 +59,7 @@ export default {
         show: false,
         msg: ""
       },
+
       dptList: [],
       notStart: now() < state.sport.startDate,
       isEnd: now() > state.sport.endDate
@@ -202,7 +204,7 @@ export default {
     if (now() > state.sport.endDate) {
     }
 
-    console.log(now(), this.sport.endDate, this.isEnd);
+    // console.log(now(), this.sport.endDate, this.isEnd);
   }
 };
 </script>
