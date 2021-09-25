@@ -320,7 +320,8 @@ export default {
   pointer-events: none;
 }
 
-@red-color: #4fe821;
+@red-color: #d0080d;
+
 .weui-btn + .weui-btn {
   margin-top: 5px;
 }
@@ -336,6 +337,8 @@ export default {
 
 .weui-btn_primary {
   background-color: @red-color;
+  border:1px solid rgb(200, 200, 200);
+
 }
 
 .slogan {

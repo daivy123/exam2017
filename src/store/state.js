@@ -25,7 +25,7 @@ const state = {
   wxUrl: "//api.cbpc.ltd/",
   tips: "",
   sport: {
-    id: 33,
+    id: 44,
     name: "学习贯彻习近平总书记“七一”重要讲话精神线上答题",
     orgname: "成都印钞有限公司", // 机构名
     slogan: "", // 口号

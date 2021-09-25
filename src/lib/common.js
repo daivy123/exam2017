@@ -1,9 +1,9 @@
 import * as R from "ramda";
 
-import questionJSON from "../assets/data/safe2020.js";
+// import questionJSON from "../assets/data/safe2020.js";
 
 // 安保测试 2020年
-const isSafeTest2020 = true;
+const isSafeTest2020 = false;
 
 function randomsort(a, b) {
   return Math.random() > 0.5 ? -1 : 1;

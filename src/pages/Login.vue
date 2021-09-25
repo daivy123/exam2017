@@ -30,7 +30,7 @@
       </template>
       <div class="btn">
         <!-- <x-button :disabled="isEnd||notStart||!shouldCommit" type="primary" @click.native="login"> -->
-          <x-button  type="primary" @click.native="login">
+          <x-button  type="primary" @click.native="login" >
           开始答题
           <!-- <span v-if="notStart">(活动未开始)</span>
           <span v-if="isEnd">(活动已结束)</span> -->
@@ -113,14 +113,14 @@ export default {
       let params = {
         sid: this.sport.id,
         card_no: this.sport.cardNo,
-        username: this.sport.userName,
+        user_name: this.sport.userName,
         dept_name: this.sport.dpt[0],
         nickname: this.userInfo.nickname,
         openid: this.userInfo.openid,
         headimgurl: this.userInfo.headimgurl,
       };
 
-      let { data } = await db.getCbpmPurchaseUser(params);
+      let { data } = await db.getViewCbpcUserList(params);
 
       if (data.length === 0 || data[0].uid == null) {
         this.toast.show = true;
@@ -235,4 +235,5 @@ export default {
   width: 80%;
   margin: 60px auto;
 }
+
 </style>
