@@ -59,7 +59,8 @@ import { dateFormat } from "vux";
 
 import { mapState } from "vuex";
 
-import questionJSON from "../assets/data/safe2020.js";
+// import questionJSON from "../assets/data/safe2020.js";
+import questionJSON from "../assets/data/party2021.js";
 
 import Tips from "../components/Tips.vue";
 import util from "../lib/common";
@@ -75,16 +76,18 @@ let key = {
   answerList: "_answerList_",
 };
 
+// console.log("questionJSON",questionJSON)
 // 是否需要随机选项数据
 let questiones = util.getPaperData(R.clone(questionJSON), {
   randAnswer: false, // 答题不随机
   randomQuestion: true, // 题目随机
 });
 let questionList = [];
-
+// console.log("questiones:",questiones)
 let curPaper = window.localStorage.getItem(key.curPaper);
 
 if (curPaper == null) {
+  // console.log('curPaper')
   curPaper = questiones.slice(0, questionNums);
   questionList = curPaper;
   window.localStorage.setItem(key.curPaper, JSON.stringify(curPaper));
@@ -94,7 +97,7 @@ if (curPaper == null) {
 
 // 快速测试
 // questionList = questionList.slice(0, 3);
-
+// console.log(questionList)
 export default {
   name: "page",
   components: {
@@ -459,7 +462,7 @@ export default {
   margin: 0;
   padding: 10px;
   color: #785a32;
-  background: url(../assets/img/bg.jpg) 0 0 no-repeat;
+  background: url(../assets/img/bg1.jpg) 0 0 no-repeat;
   background-size: 100% 110%;
 }
 .submit {

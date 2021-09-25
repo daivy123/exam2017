@@ -15,6 +15,7 @@
           ></checklist>
           <group v-else :title="`${question.title}(正确答案:${question.answerText.join('、')})`">
             <radio :options="question.option" disabled v-model="question.answer[0]"></radio>
+            
           </group>
         </div>
       </div>
@@ -29,12 +30,12 @@ import { Group, Radio, Checklist, XButton } from "vux";
 
 import { mapState } from "vuex";
 
-import questionJSON from "../assets/data/safe2020.js";
+import questionJSON from "../assets/data/party2021.js";
 
 import util from "../lib/common";
 
 // 是否需要随机选项数据
-
+console.log("questionJSON",questionJSON)
 export default {
   name: "page",
   components: {
@@ -81,6 +82,7 @@ export default {
           item.answer =
             typeof item.answer == "number" ? [item.answer] : item.answer;
           item.answerText = item.answer.map(getAnswer);
+          
           return item;
         });
     },
@@ -113,7 +115,7 @@ export default {
   margin: 0;
   padding: 10px;
   color: #785a32;
-  background: url(../assets/img/bg.jpg) 0 0 no-repeat;
+  background: url(../assets/img/bg1.jpg) 0 0 no-repeat;
   background-size: 100% 110%;
   height: 100%;
 }

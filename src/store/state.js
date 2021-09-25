@@ -17,7 +17,7 @@ let isMobile = () => {
 
 // 答题时长，60分钟
 export const maxAnswerLength = 60 * 60;
-export const questionNums = 60; // 抽题数量
+export const questionNums = 50; // 抽题数量
 
 const state = {
   isLoading: false,
@@ -26,7 +26,7 @@ const state = {
   tips: "",
   sport: {
     id: 33,
-    name: "2020年全员安全履职能力培训测试",
+    name: "学习贯彻习近平总书记“七一”重要讲话精神线上答题",
     orgname: "成都印钞有限公司", // 机构名
     slogan: "", // 口号
 
@@ -34,7 +34,7 @@ const state = {
     // randomQuestion: true, //问题随机
 
     questionNums, // 抽题数量
-    perScore: 4, // 每题得分
+    perScore: 2, // 每题得分
     useDept: true,
     isOnline: false, //实际活动
     showDocument: true,
@@ -53,7 +53,7 @@ const state = {
     minPrizeScore: 80,
     testMode: false,
     startDate: "2020-04-04",
-    endDate: "2020-04-19 00:00:00",
+    endDate: "2022-10-10 00:00:00",
     // 得分是否累加
     stackMode: true,
     // 记录每次答题得分
