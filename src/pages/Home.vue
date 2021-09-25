@@ -340,7 +340,6 @@ export default {
   border:1px solid rgb(200, 200, 200);
 
 }
-
 .slogan {
   padding-top: 15px;
   font-size: 15pt;

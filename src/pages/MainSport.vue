@@ -1,29 +1,39 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <div class="btn-wrapper login">
-        <!-- <x-button type="primary" @click.native="jump('errlist')">我的错题集</x-button> -->
-        <x-button type="primary" @click.native="jump('login')">这里是宣传页</x-button>
-        <!-- <x-button>活动已截止</x-button> -->
-        <!-- <x-button @click.native="jump('score')">排行榜</x-button> -->
-        <!-- <x-button type="primary" @click.native="jump('doc')">知识学习</x-button> -->
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.3);
+          padding: 12px;
+          border-radius: 5px;
+        "
+      >
+        <p style="text-indent: 2em">
+          为进一步推进党史学习教育走深走实，深化对党的光辉历程的学习掌握，教育引导广大党员、干部、群众坚定理想信念、坚守为民宗旨、继承建党精神，强化使命担当，现特在全公司范围开展“凝聚成钞力量
+          传承时代精神”
+          ——学习贯彻习近平总书记“七一”重要讲话精神线上答题活动。请大家认真学习习近平总书记在庆祝中国共产党成立100周年大会上的重要讲话，在规定时间内完成答题。
+        </p>
+        <br />
+        <p style="text-align: right">党委宣传部<br />2021年9月27日</p>
+      </div>
+      <br />
+      <div class="login">
+        <x-button type="primary" @click.native="jump('doc')" :disabled="times>0"
+          >开始学习 {{ times > 0 ? "(" + times + ")" : "" }}</x-button
+        >
       </div>
     </div>
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
     <v-foot color="#333" />
-    <img src="../assets/img/main1.jpg" class="mainbg" />
+    <img src="../assets/img/back.jpg" class="mainbg" />
   </div>
 </template>
 <script>
 import particles from "particles.js";
 import particlesSetting from "../lib/particlesSetting";
-
 import { XButton, Toast } from "vux";
-
-import { mapState } from "vuex";
-import * as db from "../lib/db";
 
 export default {
   components: {
@@ -38,14 +48,11 @@ export default {
       },
       showLoginfo: false,
       haveAnswerTimes: true,
+      times: 10,
+      clvId: 0,
     };
   },
   computed: {
-    ...mapState(["error_detail"]),
-    year() {
-      let date = new Date();
-      return date.getFullYear();
-    },
     sport: {
       get() {
         return this.$store.state.sport;
@@ -53,27 +60,6 @@ export default {
       set(val) {
         this.$store.commit("setSport", val);
       },
-    },
-    sportDate() {
-      let { startDate, endDate } = this.sport;
-      let startInfo = startDate.split("-");
-      let endInfo = endDate.split("-");
-      startInfo[1] = parseInt(startInfo[1], 10);
-      startInfo[2] = parseInt(startInfo[2], 10);
-      endInfo[1] = parseInt(endInfo[1], 10);
-      endInfo[2] = parseInt(endInfo[2], 10);
-
-      // 不同年
-      if (startInfo[0] !== endInfo[0]) {
-        return `${startInfo[0]}年${startInfo[1]}月${startInfo[2]}日 至 ${endInfo[0]}年${endInfo[1]}月${endInfo[2]}日`;
-      }
-
-      // 同年同月
-      if (startInfo[0] === endInfo[1]) {
-        return `${startInfo[0]}年${startInfo[1]}月${startInfo[2]}日 至 ${endInfo[2]}日`;
-      } else {
-        return `${startInfo[0]}年${startInfo[1]}月${startInfo[2]}日 至 ${endInfo[1]}月${endInfo[2]}日`;
-      }
     },
   },
   methods: {
@@ -196,65 +182,6 @@ export default {
       if (userInfo == null) {
         return;
       }
-      userInfo = JSON.parse(userInfo);
-      this.sport = {
-        userName: userInfo.user_name,
-        cardNo: userInfo.user_id,
-        dpt: [userInfo.user_dpt],
-      };
-      this.login();
-    },
-    login: async function () {
-      if (this.sport.userName == "" || this.sport.cardNo == "") {
-        return;
-      }
-
-      let params = {
-        sid: this.sport.id,
-        card_no: this.sport.cardNo,
-        username: this.sport.userName,
-        dept_name: "%%",
-      };
-
-      if (this.sport.useDept) {
-        params.dept_name = `%${this.sport.dpt[0]}%`;
-      }
-
-      let { data } = await db[
-        !this.sport.alwaysRecordScore ? "login" : "login2"
-      ](params);
-      if (data.length === 0) {
-        this.toast.show = true;
-        this.toast.msg = "登录失败";
-        return;
-      }
-
-      let obj = data[data.length - 1];
-
-      // 卡号或部门输入错误
-      if (obj.uid == 0) {
-        return;
-      }
-      //校验姓氏
-      // console.log(obj);
-
-      // 登录成功
-      this.sport.isLogin = true;
-      this.showLoginfo = true;
-
-      this.sport.uid = obj.uid;
-      this.sport.curScore = obj.score;
-      // this.sport.curTimes = parseInt(obj.answer_times) + 1;
-
-      if (
-        !this.sport.isOnline &&
-        parseInt(obj.answer_times) >= this.sport.maxTimes
-      ) {
-        this.toast.show = true;
-        this.toast.msg = "答题次数用完";
-        this.haveAnswerTimes = false;
-        this.jump("info");
-      }
     },
   },
   mounted() {
@@ -262,6 +189,13 @@ export default {
     this.loadUserInfo();
     particlesJS("home", particlesSetting);
     document.title = this.sport.name; //+ "微信答题";
+    var that = this;
+    this.clvId = window.setInterval(function () {
+      that.times > 0 && that.times--;
+    }, 1000);
+  },
+  unmounted() {
+    this.clvId && window.clearInterval(this.clvId);
   },
 };
 </script>
@@ -272,9 +206,6 @@ export default {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  // background-image: url("../assets/img/main.jpg");
-  // background-size: cover;
-  // background-position: center;
   .mainbg {
     width: 100%;
     height: 100vh;
@@ -331,14 +262,16 @@ export default {
   color: #333;
 }
 
+.weui-btn_disabled.weui-btn_primary {
+    background-color: #cc3c3e;
+}
 .weui-btn:after {
   border-color: @red-color;
 }
 
 .weui-btn_primary {
   background-color: @red-color;
-  border:1px solid rgb(200, 200, 200);
-
+  border: 1px solid rgb(200, 200, 200);
 }
 
 .slogan {
