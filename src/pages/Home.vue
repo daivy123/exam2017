@@ -12,8 +12,8 @@
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
-    <v-foot color="#aaa" />
-    <img src="../assets/img/main.jpg" class="mainbg" />
+    <v-foot color="#333" />
+    <img src="../assets/img/main1.jpg" class="mainbg" />
   </div>
 </template>
 <script>
@@ -320,7 +320,7 @@ export default {
   pointer-events: none;
 }
 
-@red-color: #e83e21;
+@red-color: #4fe821;
 .weui-btn + .weui-btn {
   margin-top: 5px;
 }

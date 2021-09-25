@@ -40,7 +40,7 @@
 
           <x-button @click.native="jump('errlist')">我的错题集</x-button>
 
-          <!-- <x-button @click.native="jump('/score')">排行榜</x-button> -->
+          <x-button @click.native="jump('/score')">答题情况汇总</x-button>
 
           <x-button v-if="isAdmin" @click.native="reset">清空得分</x-button>
         </div>
@@ -61,7 +61,8 @@
             v-for="(question, i) in questions"
             :key="i"
             v-html="`${i + 1}.${question}`"
-          ></p>
+          >
+          </p>
         </article>
       </div>
       <confirm v-model="showConfirm" title="系统提示" @on-confirm="onConfirm">
@@ -123,7 +124,7 @@
 </style>
 
 <script>
-import paper from "../assets/data/safe2020.js";
+import paper from "../assets/data/party2021.js";
 import util from "../lib/common";
 
 import { XButton, Confirm } from "vux";
@@ -136,15 +137,18 @@ export default {
   components: {
     XButton,
     Confirm
+    
   },
   data() {
     return {
       questions: [],
       paper: R.clone(paper), //.slice(0, 50),
       showConfirm: false,
-      score: {}
+      score: {},
     };
+   
   },
+  
   computed: {
     ...mapState(["sport"]),
     year() {
@@ -215,19 +219,24 @@ export default {
     handleSrcQuestion(item) {
       let options = ["A", "B", "C", "D", "E"];
       let answer = item.answer.map(idx => options[idx]).join("、");
-
+  
       let title = item.title
         .replace(/\(/g, "（")
         .replace(/\)/g, "）")
-        .replace("（ ", `（ <span style="font-weight:bold;">${answer}</span>`);
+        .replace("（ ", `（ <style="font-weight:bold;">${answer}</style=>`);
       item.option.forEach((option, idx) => {
         title += `<br/><span style="${
           item.answer.includes(idx)
             ? "color:#e23;text-decoration: underline;"
             : ""
-        }">${options[idx]}、${option}</span>`;
+        }">${options[idx]}、${option}</span>` ;
       });
-      return title;
+
+      //  let analysis = item.analysis
+      //   .replace(/\(/g, "（")
+      //   .replace(/\)/g, "）")
+      //   // .replace("（ ", `（ <style="font-weight:bold;">${analysis}</style=>`);
+      return title+`<br/><span style="color:#e80;">解析：${item.analysis}</span>`;
     },
     init() {
       this.onRefresh();

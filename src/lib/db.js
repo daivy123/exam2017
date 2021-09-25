@@ -2,7 +2,7 @@ import { axios } from "./axios";
 
 import state from "../store/state";
 
-const FemaleSport = state.sport.id == 32;
+const FemaleSport = state.sport.id == 44;
 
 // console.log(FemaleSport);
 

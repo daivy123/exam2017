@@ -134,13 +134,10 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     });
   }
 
-  if (questionJSON.length !== randomQuestions.length) {
-    return randomQuestions;
-  }
-
-  let judge = randomQuestions.slice(0, 15);
-  let singleChoice = randomQuestions.slice(15, 55);
-  let multiple = randomQuestions.slice(55, 71);
+  let singleChoice = dist.slice(0, 50);
+  // let multiple = dist.slice(200, 240);
+  let multiple = dist.slice(50, 75);
+  let judge = dist.slice(240, 300);
 
   singleChoice = randomArr(singleChoice);
   multiple = randomArr(multiple);

@@ -17,8 +17,8 @@ import { mapState } from "vuex";
 import { axios } from "./lib/axios";
 import * as db from "./lib/db";
 import moment from "moment";
-// import VConsole from "vconsole";
-// var v = new VConsole();
+// import vconsole from "vconsole";
+// var a = new vconsole();
 
 export default {
   name: "app",
@@ -89,7 +89,7 @@ export default {
       return axios({
         params: {
           s: "/weixin/signature",
-          url: this.url.split("?")[0],
+          url: this.url,
         },
       }).then((data) => {
         this.shouldShare = true;
@@ -109,7 +109,6 @@ export default {
           "onMenuShareAppMessage",
           "onMenuShareTimeline",
           "hideMenuItems",
-          "hideOptionMenu",
         ],
       };
       this.$wechat.config(config);
@@ -145,10 +144,6 @@ export default {
             "menuItem:openWithQQBrowser",
             "menuItem:openWithSafari",
             "menuItem:share:email",
-
-            // 禁止分享朋友圈相关设置
-            "menuItem:share:appMessage",
-            "menuItem:share:timeline",
           ],
         });
       });
@@ -260,57 +255,6 @@ export default {
 
     if (moment().format("YYYYMMDD") == "20200404") {
       document.querySelector("html").style.filter = "grayscale(1)";
-    }
-
-    if (!this.sport.validQR) {
-      return;
-    }
-
-    var router = this.$router;
-    // 宽高比
-    /**
-     * 9/16 = 0.5625
-     * 10/16 = 0.625
-     */
-    // console.log(window.innerWidth / window.innerHeight);
-    if (window.innerWidth / window.innerHeight > 0.7) {
-      router.push("/error?state=2");
-    }
-
-    // 监听页面非激活事件；
-    document.addEventListener("visibilitychange", function () {
-      // 用户息屏、或者切到后台运行 （离开页面）
-      // console.log("切换到后台", moment().format("YYYYMMDD hh:mm:ss"));
-      router.push("/error?state=2");
-    });
-
-    // 返回时关闭微信网页
-    window.addEventListener(
-      "popstate",
-      function (e) {
-        weixinClosePage();
-      },
-      false
-    );
-    //关闭微信页面
-    function weixinClosePage() {
-      if (typeof WeixinJSBridge == "undefined") {
-        if (document.addEventListener) {
-          document.addEventListener(
-            "WeixinJSBridgeReady",
-            weixin_ClosePage,
-            false
-          );
-        } else if (document.attachEvent) {
-          document.attachEvent("WeixinJSBridgeReady", weixin_ClosePage);
-          document.attachEvent("onWeixinJSBridgeReady", weixin_ClosePage);
-        }
-      } else {
-        weixin_ClosePage();
-      }
-    }
-    function weixin_ClosePage() {
-      WeixinJSBridge.call("closeWindow");
     }
   },
 };

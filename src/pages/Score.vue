@@ -70,7 +70,7 @@ import * as db from "../lib/db";
 
 import state from "../store/state";
 
-const FemaleSport = state.sport.id == 32;
+const FemaleSport = state.sport.id == 44;
 
 export default {
   components: {

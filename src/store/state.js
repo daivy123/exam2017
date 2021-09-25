@@ -18,7 +18,6 @@ let isMobile = () => {
 // 答题时长，60分钟
 export const maxAnswerLength = 60 * 60;
 export const questionNums = 50; // 抽题数量
-// 1 2 3
 
 const state = {
   isLoading: false,
@@ -26,8 +25,8 @@ const state = {
   wxUrl: "//api.cbpc.ltd/",
   tips: "",
   sport: {
-    id: 40,
-    name: "招标与集中采购知识测试",
+    id: 33,
+    name: "学习贯彻习近平总书记“七一”重要讲话精神线上答题",
     orgname: "成都印钞有限公司", // 机构名
     slogan: "", // 口号
 
@@ -35,7 +34,7 @@ const state = {
     // randomQuestion: true, //问题随机
 
     questionNums, // 抽题数量
-    perScore: 4, // 每题得分
+    perScore: 2, // 每题得分
     useDept: true,
     isOnline: false, //实际活动
     showDocument: false,
@@ -54,7 +53,7 @@ const state = {
     minPrizeScore: 80,
     testMode: false,
     startDate: "2020-04-04",
-    endDate: "2020-12-29 00:00:00",
+    endDate: "2022-10-10 00:00:00",
     // 得分是否累加
     stackMode: true,
     // 记录每次答题得分
