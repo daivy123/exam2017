@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <group class="content">
+    <group class="content" style="margin-top: 10%">
       <x-input
         title="姓名"
         required
@@ -8,6 +8,7 @@
         v-model="sport.userName"
         placeholder="点击此处输入姓名"
       ></x-input>
+      <x-switch title="是否为党员" v-model="is_cpc"></x-switch>
       <x-input
         title="卡号"
         required
@@ -30,8 +31,8 @@
       </template>
       <div class="btn">
         <!-- <x-button :disabled="isEnd||notStart||!shouldCommit" type="primary" @click.native="login"> -->
-          <x-button  type="primary" @click.native="login" >
-          开始答题
+        <x-button type="primary" @click.native="login">
+          参与活动
           <!-- <span v-if="notStart">(活动未开始)</span>
           <span v-if="isEnd">(活动已结束)</span> -->
         </x-button>
@@ -40,12 +41,21 @@
         <!-- <x-button @click.native="jump('study')">知识学习</x-button> -->
       </div>
     </group>
+    <img src="../assets/img/bg1.jpg" class="mainbg" />
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <v-foot />
   </div>
 </template>
 <script>
-import { XButton, XInput, Group, Toast, Picker, GroupTitle } from "vux";
+import {
+  XButton,
+  XInput,
+  XSwitch,
+  Group,
+  Toast,
+  Picker,
+  GroupTitle,
+} from "vux";
 
 import { mapState } from "vuex";
 import * as db from "../lib/db";
@@ -62,6 +72,7 @@ export default {
     Toast,
     GroupTitle,
     Picker,
+    XSwitch,
   },
   data() {
     return {
@@ -73,6 +84,7 @@ export default {
       dptList: [],
       notStart: now() < state.sport.startDate,
       isEnd: now() > state.sport.endDate,
+      is_cpc: false,
     };
   },
   computed: {
@@ -134,6 +146,7 @@ export default {
       this.sport.curTimes = parseInt(obj.answer_times);
 
       this.sport.uid = obj.uid;
+      db.setCbpcUser2020CPC({ uid: obj.uid, is_cpc: this.is_cpc ? 1 : 0 });
       this.sport.curScore = obj.score;
       this.sport.curTimeLength = obj.time_length;
 
@@ -157,11 +170,7 @@ export default {
         return;
       }
 
-      if (this.sport.showDocument) {
-        this.jump("doc");
-      } else {
-        this.jump("paper");
-      }
+      this.jump("main_sport");
     },
     // 更新头像信息
     updateUserInfo(uid, userInfo) {
@@ -209,15 +218,28 @@ export default {
     }
 
     // console.log(now(), this.sport.endDate, this.isEnd);
-  }
+  },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  .mainbg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .weui-cells {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  .vux-x-input.disabled .weui-input {
+    -webkit-text-fill-color: #222;
+  }
 }
 
 .content {
@@ -235,5 +257,4 @@ export default {
   width: 80%;
   margin: 60px auto;
 }
-
 </style>

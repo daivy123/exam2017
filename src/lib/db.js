@@ -487,3 +487,13 @@ export const getCbpcSport2020Userinfo = (params) =>
     url: "/324/fe4a58887a.json",
     params,
   });
+
+/**
+ *   @database: { 微信开发 }
+ *   @desc:     { 更新党员身份信息 }
+ */
+export const setCbpcUser2020CPC = (params) =>
+  axios({
+    url: "/419/6b537c6381.json",
+    params,
+  }).then(({ data: [{ affected_rows }] }) => affected_rows > 0);

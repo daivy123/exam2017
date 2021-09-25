@@ -13,6 +13,12 @@ export default new Router({
       },
     },
     {
+      path: "/main_sport",
+      component: function (resolve) {
+        require(["../pages/MainSport.vue"], resolve);
+      },
+    },
+    {
       path: "/login",
       component: function (resolve) {
         require(["../pages/Login.vue"], resolve);

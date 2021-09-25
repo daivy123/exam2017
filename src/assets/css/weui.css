@@ -9,9 +9,8 @@
   padding: 5px 10px !important;
 }
 .weui-cells {
-  font-size: 18px;
+  font-size: 18px; 
 }
-
 .weui-cells_radio .weui-cell__hd {
   padding-right: 0.35em;
 }
@@ -54,8 +53,4 @@
 
 .weui-media-box__thumb {
   border-radius: 50% !important;
-}
-
-.weui-cells {
-  background-color: #faf5f0 !important;
-}
+} 
