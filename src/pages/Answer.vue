@@ -82,7 +82,7 @@ export default {
           item.answer =
             typeof item.answer == "number" ? [item.answer] : item.answer;
           item.answerText = item.answer.map(getAnswer);
-          
+          console.log(item.answer);
           return item;
         });
     },
