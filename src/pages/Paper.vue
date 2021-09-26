@@ -9,7 +9,7 @@
         <span v-if="sport.testMode"
           >答案:{{ question.answer.join(",") }},得分:{{ subScore }}</span
         >
-        <span
+        <!-- <span
           style="
             background: #785a32;
             color: #fff;
@@ -18,7 +18,7 @@
             font-size: 10px;
           "
           >{{ curTime }}</span
-        >
+        > -->
         <div style="position: relative">
           <div class="qa-num">{{ i + 1 }}/{{ questionList.length }}</div>
           <div class="qa-body">
@@ -526,6 +526,6 @@ export default {
   padding: 13px 0;
   box-sizing: border-box;
   overflow-y: auto;
-  min-height: 60vh;
+  min-height: 50vh;
 }
 </style>
