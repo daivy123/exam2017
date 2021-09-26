@@ -8,7 +8,7 @@
         v-model="sport.userName"
         placeholder="点击此处输入姓名"
       ></x-input>
-      <x-switch title="是否为党员" v-model="is_cpc"></x-switch>
+      <!-- <x-switch title="是否为党员" v-model="is_cpc"></x-switch> -->
       <x-input
         title="卡号"
         required
@@ -84,7 +84,7 @@ export default {
       dptList: [],
       notStart: now() < state.sport.startDate,
       isEnd: now() > state.sport.endDate,
-      is_cpc: false,
+      // is_cpc: false,
     };
   },
   computed: {
@@ -146,7 +146,7 @@ export default {
       this.sport.curTimes = parseInt(obj.answer_times);
 
       this.sport.uid = obj.uid;
-      db.setCbpcUser2020CPC({ uid: obj.uid, is_cpc: this.is_cpc ? 1 : 0 });
+      // db.setCbpcUser2020CPC({ uid: obj.uid, is_cpc: this.is_cpc ? 1 : 0 });
       this.sport.curScore = obj.score;
       this.sport.curTimeLength = obj.time_length;
 

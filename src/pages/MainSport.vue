@@ -237,7 +237,7 @@ export default {
   }
   .btn-wrapper {
     position: absolute;
-    bottom: 7%;
+    bottom: 24%;
     width: 145px;
     font-size: 10pt;
     p {
