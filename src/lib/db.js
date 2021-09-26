@@ -2,7 +2,7 @@ import { axios } from "./axios";
 
 import state from "../store/state";
 
-const FemaleSport = state.sport.id == 44;
+const FemaleSport = state.sport.id == 32;
 
 // console.log(FemaleSport);
 
@@ -497,3 +497,15 @@ export const setCbpcUser2020CPC = (params) =>
     url: "/419/6b537c6381.json",
     params,
   }).then(({ data: [{ affected_rows }] }) => affected_rows > 0);
+
+/**
+ *   @database: { 微信开发 }
+ *   @desc:     { 党员非党员参与人数 }
+ */
+export const getCbpcSport2020CPCUsers = (sid) =>
+  axios({
+    url: "/420/b84ed4a458.json",
+    params: {
+      sid,
+    },
+  }).then((res) => res.data);

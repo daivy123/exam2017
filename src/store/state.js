@@ -55,7 +55,7 @@ const state = {
     startDate: "2020-04-04",
     endDate: "2022-10-10 00:00:00",
     // 得分是否累加
-    stackMode: true,
+    stackMode: false,
     // 记录每次答题得分
     alwaysRecordScore: true,
     readMaxScore: true,

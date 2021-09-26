@@ -2,9 +2,7 @@
   <div>
     <!-- <v-header/> -->
     <div class="content">
-      <h3 v-if="showDept" style="margin-top: 30px;">
-        1.各单位平均得分
-      </h3>
+      <h3 v-if="showDept" style="margin-top: 30px">1.各单位平均得分</h3>
       <div class="dept-score" :class="{ hideSome: !isShowFull }">
         <ul
           v-if="showDept"
@@ -16,28 +14,29 @@
             v-for="({ avg_score, rate, user_dpt }, i) in depts"
             :key="i"
           >
-            <span>{{ i + 1 }}.{{ user_dpt }}</span>
-            <span>{{ avg_score }}分</span>
-            <!-- <span>{{ rate }}%</span> -->
+            <span>{{ i + 1 }}.{{ user_dpt }}(参与率:{{ rate }}%)</span>
+            <span>{{ avg_score }}分</span> 
           </li>
         </ul>
         <div :class="{ hideButton: isShowFull }" class="btn-showall">
           <x-button @click.native="showAll">显示全部</x-button>
         </div>
       </div>
-      <h3>2.得分排名(参与人数:{{ total }})</h3>
+      <h3>2.党员得分排名(参与人数:{{ total.cpc }})</h3>
       <ul class="dept-rate">
         <li
-          v-for="({
-            user_name,
-            user_dpt,
-            score,
-            time_length,
-            avatar,
-            answer_times,
-            total_time,
-          },
-          i) in users"
+          v-for="(
+            {
+              user_name,
+              user_dpt,
+              score,
+              time_length,
+              avatar,
+              answer_times,
+              total_time,
+            },
+            i
+          ) in user_cpc"
           :key="i"
         >
           <img class="avatar" :src="avatar" alt="user_name" />
@@ -48,11 +47,57 @@
             </div>
             <div>
               <p>
-                总分:{{ score }}分
-                <!-- (<span class="bold">{{answer_times}}</span>次) -->
+                最高分:{{ score }}分 (<span class="bold">{{
+                  answer_times
+                }}</span
+                >次)
               </p>
               <p>{{ total_time }}</p>
-              <!-- <p>平均耗时:{{Math.floor(time_length/60)}}分{{time_length%60}}秒</p> -->
+              <p>
+                平均耗时:{{ Math.floor(time_length / 60) }}分{{
+                  time_length % 60
+                }}秒
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <h3>3.非党员得分排名(参与人数:{{ total.not_cpc }})</h3>
+      <ul class="dept-rate">
+        <li
+          v-for="(
+            {
+              user_name,
+              user_dpt,
+              score,
+              time_length,
+              avatar,
+              answer_times,
+              total_time,
+            },
+            i
+          ) in user_not_cpc"
+          :key="i"
+        >
+          <img class="avatar" :src="avatar" alt="user_name" />
+          <div class="detail">
+            <div class="text-left">
+              <p class="bold">{{ i + 1 }}.{{ user_name }}</p>
+              <p>{{ user_dpt }}</p>
+            </div>
+            <div>
+              <p>
+                最高分:{{ score }}分 (<span class="bold">{{
+                  answer_times
+                }}</span
+                >次)
+              </p>
+              <p>{{ total_time }}</p>
+              <p>
+                平均耗时:{{ Math.floor(time_length / 60) }}分{{
+                  time_length % 60
+                }}秒
+              </p>
             </div>
           </div>
         </li>
@@ -68,9 +113,7 @@ import { mapState } from "vuex";
 import { XButton } from "vux";
 import * as db from "../lib/db";
 
-import state from "../store/state";
-
-const FemaleSport = state.sport.id == 44;
+const FemaleSport = false;
 
 export default {
   components: {
@@ -81,13 +124,22 @@ export default {
     return {
       depts: [],
       users: [],
-      total: "",
+      total: {
+        cpc: 0,
+        not_cpc: 0,
+      },
       showDept: !FemaleSport,
       isShowFull: false,
     };
   },
   computed: {
     ...mapState(["sport"]),
+    user_cpc() {
+      return this.users.filter((item) => item.is_cpc == 1);
+    },
+    user_not_cpc() {
+      return this.users.filter((item) => item.is_cpc != 1);
+    },
   },
   methods: {
     showAll() {
@@ -96,13 +148,13 @@ export default {
     },
     getDeptRatio() {
       if (this.sport.id != 35) {
-        db[
-          this.sport.readSumScore
-            ? "getCbpcSportMainByDept2"
-            : this.sport.stackMode
-            ? "getCbpcSportMainByDept"
-            : "getCbpcSportDeptByMaxScore"
-        ](this.sport.id).then(({ data }) => {
+        var method = this.sport.readSumScore
+          ? "getCbpcSportMainByDept2"
+          : this.sport.stackMode
+          ? "getCbpcSportMainByDept"
+          : "getCbpcSportDeptByMaxScore";
+
+        db[method](this.sport.id).then(({ data }) => {
           this.depts = data;
         });
       } else {
@@ -128,23 +180,28 @@ export default {
       ]({ sid: this.sport.id, limit: 500 }).then(({ data }) => {
         this.users = data.map((item) => {
           let { total_time } = item;
-          // total_time = parseInt(total_time, 10);
-          // let h = Math.floor(total_time / 3600);
-          // let m = Math.floor((total_time % 3600) / 60);
-          // let s = Math.floor(total_time % 60);
-          // if (h > 0) {
-          //   h += "时";
-          // } else {
-          //   h = "";
-          // }
-          // item.total_time = `${h}${m}分${s}秒`;
+          total_time = parseInt(total_time, 10);
+          let h = Math.floor(total_time / 3600);
+          let m = Math.floor((total_time % 3600) / 60);
+          let s = Math.floor(total_time % 60);
+          if (h > 0) {
+            h += "时";
+          } else {
+            h = "";
+          }
+          item.total_time = `${h}${m}分${s}秒`;
           return item;
         });
       });
     },
     getTotal() {
-      db.getCbpcSportTotalPeople(this.sport.id).then(({ data }) => {
-        this.total = data[0].value;
+      db.getCbpcSport2020CPCUsers(this.sport.id).then((data) => {
+        var cpc = data.find((item) => item.is_cpc == 1) || { users: 0 };
+        var not_cpc = data.find((item) => item.is_cpc == 0) || { users: 0 };
+        this.total = {
+          cpc: cpc.users,
+          not_cpc: not_cpc.users,
+        };
       });
     },
     init() {
