@@ -173,7 +173,7 @@ export default {
     onRefresh() {
       db.getCbpcSport2020Level(this.sport.uid).then(res => {
         this.score = res.data[0];
-        console.log(this.score.num,this.sport.maxTimes);
+        // console.log(this.score.num,this.sport.maxTimes);
         if (this.score.num >= this.sport.maxTimes) {
           this.$router.push("/info");
         }

@@ -3,19 +3,19 @@
     <div class="content">
       <msg :title="title" :description="desc" :icon="icon"></msg>
       <x-button
-        class="wrapper"
+        class="btn"
         @click.native="viewLucky"
         v-show="sport.doLottery"
         >查看中奖列表</x-button
       >
       <x-button
-        class="wrapper"
+        class="btn"
         @click.native="viewChart"
-        v-show="sport.isOnline"
+        v-if="sport.isOnline"
         >查看实时得分</x-button
       >
-      <!-- <x-button class="wrapper" @click.native="reload">{{answer_times=='0'?'查看得分':'再答一次'}}</x-button> -->
-      <!-- <x-button class="wrapper" @click.native="reload">查看得分</x-button> -->
+      <!-- <x-button class="btn" @click.native="reload">{{answer_times=='0'?'查看得分':'再答一次'}}</x-button> -->
+      <!-- <x-button class="btn" @click.native="reload">查看得分</x-button> -->
 
       <x-button v-if="isAdmin" @click.native="jump('user')"
         >修改用户信息</x-button
@@ -23,47 +23,14 @@
       <x-button v-if="isAdmin" @click.native="reset">清空得分</x-button>
 
       <x-button
-        class="wrapper"
+        class="btn"
         type="primary"
-        v-show="error_detail.length > 0"
+        v-if="error_detail.length > 0"
         @click.native="showAnswer"
         >查看正确答案</x-button
       >
-      <!-- <x-button class="wrapper" @click.native="scoreList">得分排行榜</x-button> -->
-      <!-- <x-button class="wrapper" @click.native="jump('errlist')">我的错题集</x-button> -->
-
-      <!-- <div class="marquee" style="margin-top: 20px;">
-        <marquee scrollamount="10"
-          >当前时间:{{ clock }} 当前时间:{{ clock }} 当前时间:{{
-            clock
-          }}</marquee
-        >
-      </div> -->
-      <!-- <div class="item">
-        <p class="title" :style="!isValid ? 'color:#e23' : ''">
-          身份校验：{{ isValid ? "通过" : "未通过" }}
-        </p>
-
-        <div class="row">
-          <div class="column" style="align-items: flex-start;">
-            <p>姓名：{{ dbUserInfo.username }}</p>
-            <p>部门：{{ dbUserInfo.deptname }}</p>
-            <p>卡号：{{ dbUserInfo.cardno }}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <div style="margin: 10px 0;">1.本机微信</div>
-            <img style="margin: 10px 0;" :src="userInfo.headimgurl" alt />
-            <div style="font-weight: bold;">{{ userInfo.nickname }}</div>
-          </div>
-          <div class="column">
-            <div style="margin:10px 0">2.答题人微信</div>
-            <img style="margin:10px 0" :src="dbUserInfo.headimgurl" alt />
-            <div style="font-weight:bold;">{{dbUserInfo.nickname}}</div>
-          </div>
-        </div>
-      </div> -->
+      <x-button class="btn" @click.native="scoreList">得分排行榜</x-button>
+      <x-button class="btn" @click.native="jump('errlist')">我的错题集</x-button>
     </div>
     <confirm v-model="showConfirm" title="系统提示" @on-confirm="onConfirm">
       <p style="text-align: center;">
@@ -276,8 +243,7 @@ export default {
   }
 }
 
-.wrapper {
-  width: 90%;
-  height: 40%;
+.btn {
+  width: 90%; 
 }
 </style>

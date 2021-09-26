@@ -39,7 +39,7 @@
           <x-button
             :disabled="!isCompleted"
             type="primary"
-            @click.native="submit(sport.questionNums)"
+            @click.native="showModal(true)"
             >提交</x-button
           >
         </div>
@@ -114,6 +114,7 @@ export default {
     Checklist,
     XButton,
     Tips,
+    Confirm
   },
   data() {
     return {
@@ -129,6 +130,7 @@ export default {
       curAnswerLength: 0,
       curItvId: 0,
       curAnswerIdx: 0,
+      modal:false
     };
   },
   computed: {
@@ -234,6 +236,9 @@ export default {
     },
   },
   methods: {
+    showModal(val){
+      this.modal = val
+    },
     getCompleteStatus() {
       let flag = true;
       for (let i = 0; flag && i < this.answerList.length; i++) {
@@ -454,7 +459,7 @@ export default {
       this.$router.push("/");
     } else {
       // 如果答题次数超标，跳转至信息(防止按返回键继续答题)
-     console.log(this.sport.maxTimes,this.sport.curTimes);
+
       if (!this.sport.isOnline && this.sport.curTimes >= this.sport.maxTimes) {
         this.$router.push("info");
         return;

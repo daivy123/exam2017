@@ -205,10 +205,10 @@ export default {
       this.login();
     },
     login: async function () {
-      if (this.sport.userName == "" || this.sport.cardNo == "") {
+      if (this.sport.userName == "" || typeof this.sport.userName == 'undefined' || this.sport.cardNo == "") {
         return;
       }
-
+      
       let params = {
         sid: this.sport.id,
         card_no: this.sport.cardNo,

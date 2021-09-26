@@ -80,11 +80,8 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     return json;
   }
   let questions = R.clone(json);
-
-  if (!isSafeTest2020) {
-    randomQuestion ? randomArr(json) : json;
-  }
-
+  questions = randomArr(questions)
+  
   questions = questions.map((item, idx) => {
     item.score = item.score || 1;
     item.questionId = idx;
