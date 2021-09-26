@@ -13,7 +13,7 @@
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
     <v-foot color="#333" />
-    <img src="../assets/img/main1.jpg" class="mainbg" />
+    <img src="../assets/img/main1.png" class="mainbg" />
   </div>
 </template>
 <script>
@@ -205,10 +205,14 @@ export default {
       this.login();
     },
     login: async function () {
-      if (this.sport.userName == "" || typeof this.sport.userName == 'undefined' || this.sport.cardNo == "") {
+      if (
+        this.sport.userName == "" ||
+        typeof this.sport.userName == "undefined" ||
+        this.sport.cardNo == ""
+      ) {
         return;
       }
-      
+
       let params = {
         sid: this.sport.id,
         card_no: this.sport.cardNo,
@@ -338,8 +342,7 @@ export default {
 
 .weui-btn_primary {
   background-color: @red-color;
-  border:1px solid rgb(200, 200, 200);
-
+  border: 1px solid rgb(200, 200, 200);
 }
 .slogan {
   padding-top: 15px;

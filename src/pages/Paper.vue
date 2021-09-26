@@ -19,7 +19,7 @@
           "
           >{{ curTime }}</span
         >
-        <div style="position: relative;">
+        <div style="position: relative">
           <div class="qa-num">{{ i + 1 }}/{{ questionList.length }}</div>
           <div class="qa-body">
             <checklist
@@ -114,7 +114,7 @@ export default {
     Checklist,
     XButton,
     Tips,
-    Confirm
+    Confirm,
   },
   data() {
     return {
@@ -130,7 +130,7 @@ export default {
       curAnswerLength: 0,
       curItvId: 0,
       curAnswerIdx: 0,
-      modal:false
+      modal: false,
     };
   },
   computed: {
@@ -236,8 +236,8 @@ export default {
     },
   },
   methods: {
-    showModal(val){
-      this.modal = val
+    showModal(val) {
+      this.modal = val;
     },
     getCompleteStatus() {
       let flag = true;
@@ -320,14 +320,13 @@ export default {
 
       this.sport.curScore = Math.max(this.sport.curScore, params.score);
       // 如果到了最后一页点击按钮提交，跳转到提示页面
-        console.log(this.sport.questionNums,answer_nums);
+      console.log(this.sport.questionNums, answer_nums);
       if (answer_nums == this.sport.questionNums) {
         this.toast.show = true;
         this.toast.msg = "提交成功";
         this.sport.curTimes++;
         this.$router.push("info");
       }
-    
     },
     init() {
       if (this.paperInit) {
@@ -454,7 +453,7 @@ export default {
   },
   mounted() {
     window.localStorage.removeItem("error_detail");
-     
+
     if (!this.sport.isLogin) {
       this.$router.push("/");
     } else {

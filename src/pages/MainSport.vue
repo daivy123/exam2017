@@ -6,6 +6,8 @@
           background: rgba(255, 255, 255, 0.3);
           padding: 12px;
           border-radius: 5px;
+          margin-top: 90px;
+          font-size: 15px;
         "
       >
         <p style="text-indent: 2em">
@@ -18,7 +20,10 @@
       </div>
       <br />
       <div class="login">
-        <x-button type="primary" @click.native="jump('doc')" :disabled="times>0"
+        <x-button
+          type="primary"
+          @click.native="jump('doc')"
+          :disabled="times > 0"
           >开始学习 {{ times > 0 ? "(" + times + ")" : "" }}</x-button
         >
       </div>
@@ -263,7 +268,7 @@ export default {
 }
 
 .weui-btn_disabled.weui-btn_primary {
-    background-color: #cc3c3e;
+  background-color: #cc3c3e;
 }
 .weui-btn:after {
   border-color: @red-color;
