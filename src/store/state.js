@@ -46,7 +46,7 @@ const state = {
     dpt: [],
     isLogin: false,
     curScore: 0, // 上次答题得分
-    maxTimes: 1,
+    maxTimes: 99999,
     curTimes: 0,
     curTimeLength: 0, //当前答题时间
     // 最小抽奖得分
@@ -61,7 +61,7 @@ const state = {
     readMaxScore: true,
     readSumScore: true,
     maxAnswerLength, // 最长答题时间，4分钟
-    validNoncer:false,
+    validNoncer: false,
     validQR: true, // 校验是否为二维码进入
   },
   paperInit: false,

@@ -37,7 +37,7 @@ import questionJSON from "../assets/data/party2021.js";
 
 import util from "../lib/common";
 import * as db from "../lib/db";
-
+import * as R from "ramda"
 // 是否需要随机选项数据
 
 export default {

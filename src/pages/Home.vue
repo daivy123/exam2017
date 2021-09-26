@@ -215,6 +215,7 @@ export default {
         username: this.sport.userName,
         dept_name: "%%",
       };
+      console.log(params);
 
       if (this.sport.useDept) {
         params.dept_name = `%${this.sport.dpt[0]}%`;

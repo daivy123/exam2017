@@ -315,12 +315,14 @@ export default {
 
       this.sport.curScore = Math.max(this.sport.curScore, params.score);
       // 如果到了最后一页点击按钮提交，跳转到提示页面
+        console.log(this.sport.questionNums,answer_nums);
       if (answer_nums == this.sport.questionNums) {
         this.toast.show = true;
         this.toast.msg = "提交成功";
         this.sport.curTimes++;
         this.$router.push("info");
       }
+    
     },
     init() {
       if (this.paperInit) {
@@ -447,10 +449,12 @@ export default {
   },
   mounted() {
     window.localStorage.removeItem("error_detail");
+     
     if (!this.sport.isLogin) {
       this.$router.push("/");
     } else {
       // 如果答题次数超标，跳转至信息(防止按返回键继续答题)
+     console.log(this.sport.maxTimes,this.sport.curTimes);
       if (!this.sport.isOnline && this.sport.curTimes >= this.sport.maxTimes) {
         this.$router.push("info");
         return;
