@@ -17,7 +17,7 @@ let isMobile = () => {
 
 // 答题时长，60分钟
 export const maxAnswerLength = 480 * 60;
-export const questionNums = 50; // 抽题数量
+export const questionNums = 25; // 抽题数量
 
 const state = {
   isLoading: false,

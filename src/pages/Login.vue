@@ -153,7 +153,7 @@ export default {
       localStorage.setItem(
         "cc_p_userInfo",
         JSON.stringify({
-          user_name: params.username,
+          user_name: params.user_name,
           user_id: params.card_no,
           user_dpt: params.dept_name,
           uid: obj.uid,
