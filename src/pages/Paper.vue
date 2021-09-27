@@ -105,7 +105,7 @@ if (curPaper == null) {
 
 // 快速测试
 // questionList = questionList.slice(0, 3);
-console.log(questionList)
+// console.log(questionList)
 export default {
   name: "page",
   components: {
@@ -137,7 +137,7 @@ export default {
   computed: {
     ...mapState(["userInfo"]),
     questionList() {
-      console.log(questionList)
+      // console.log(questionList)
       return questionList;
     },
     sport: {
