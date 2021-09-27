@@ -102,7 +102,8 @@ export default {
       console.log(this.questionList);
     },
     reload() {
-      window.location.href = window.location.href.split("#")[0];
+      // window.location.href = window.location.href.split("#")[0] + "#login";
+      this.jump("/doc");
     },
     getErrDetail() {
       let e = window.localStorage.getItem("error_detail");

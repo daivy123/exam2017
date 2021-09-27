@@ -391,7 +391,8 @@ export const getCbpcSportListCfg = (sid) =>
 */
 export const getCbpcSport2020Level = (uid) =>
   axios({
-    url: "/297/2df50df059.json",
+    // url: "/297/2df50df059.json",
+    url: "/421/7ed0d588ad.json", // 最高得分模式
     params: {
       sid: state.sport.id,
       sid2: state.sport.id,

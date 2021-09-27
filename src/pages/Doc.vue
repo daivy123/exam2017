@@ -48,9 +48,9 @@
         <p v-if="score.num > 0" class="subtitle">
           你当前共答题
           <span>{{ score.num }}</span>
-          次，平均得分
+          次，最高得分
           <span>{{ score.score.toFixed(2) }}</span
-          >分，平均得分排名第 <span>{{ score.level }}</span
+          >分，最高得分排名第 <span>{{ score.level }}</span
           >名
         </p>
 

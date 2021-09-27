@@ -153,7 +153,7 @@ export default {
           : this.sport.stackMode
           ? "getCbpcSportMainByDept"
           : "getCbpcSportDeptByMaxScore";
-
+        method = 'getCbpcSportDeptByMaxScore';
         db[method](this.sport.id).then(({ data }) => {
           this.depts = data;
         });
