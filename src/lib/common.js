@@ -80,10 +80,10 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     return json;
   }
   let questions = R.clone(json);
-  questions = randomArr(questions)
+  
   
   questions = questions.map((item, idx) => {
-    item.score = item.score || 1;
+    // item.score = item.score || 1;
     item.questionId = idx;
     if (item.answer.length > 1) {
       item.title = "【多选题】" + item.title;
@@ -98,6 +98,9 @@ function getPaperData(json, { randAnswer, randomQuestion }) {
     }
     return item;
   });
+
+  questions = randomArr(questions)
+  
   // 用户可选择是否随机选项
   let randomQuestions = questions;
 

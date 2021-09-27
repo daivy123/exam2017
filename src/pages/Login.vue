@@ -216,7 +216,7 @@ export default {
     this.init();
     if (now() > state.sport.endDate) {
     }
-
+    // console.log(this.sport.dpt,this.dptList)
     // console.log(now(), this.sport.endDate, this.isEnd);
   },
 };

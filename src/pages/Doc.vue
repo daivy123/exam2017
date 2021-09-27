@@ -55,7 +55,7 @@
         </p>
 
         <!-- <p class="item" style="font-size:10pt;">(本部分将每次随机生成{{sport.questionNums}}题以供学习)</p> -->
-        <p class="subtitle">知识学习</p>
+        <p class="subtitle" style="font-weight:bold;color:#e23;">知识学习</p>
         <article>
           <p
             class="item"

@@ -51,7 +51,7 @@ export default {
       },
       showLoginfo: false,
       haveAnswerTimes: true,
-      times: 10,
+      times: 5,
       clvId: 0,
     };
   },

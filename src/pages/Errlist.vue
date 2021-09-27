@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="submit" v-if="i==questionList.length-1">
-        <x-button type="primary" @click.native="reload">重新答题</x-button>
+        <x-button type="primary" @click.native="reload">重新学习</x-button>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ export default {
     },
     reload() {
       // window.location.href = window.location.href.split("#")[0] + "#login";
-      this.jump("login");
+      this.jump("/doc");
     },
     async getErrList() {
       let curUser = window.localStorage.getItem("cc_p_userInfo");
