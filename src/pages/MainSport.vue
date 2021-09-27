@@ -15,10 +15,8 @@
           传承时代精神”
           ——学习贯彻习近平总书记“七一”重要讲话精神线上答题活动。请大家认真学习习近平总书记在庆祝中国共产党成立100周年大会上的重要讲话，在规定时间内完成答题。
         </p>
-        <br />
         <p style="text-align: right">党委宣传部<br />2021年9月27日</p>
-      </div>
-      <br />
+      </div> <br/>
       <div class="login">
         <x-button
           type="primary"
@@ -32,7 +30,7 @@
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
     <v-foot color="#333" />
-    <img src="../assets/img/back.jpg" class="mainbg" />
+    <img src="../assets/img/bg1.png" class="mainbg" />
   </div>
 </template>
 <script>

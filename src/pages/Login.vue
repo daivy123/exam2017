@@ -41,7 +41,7 @@
         <!-- <x-button @click.native="jump('study')">知识学习</x-button> -->
       </div>
     </group>
-    <img src="../assets/img/bg1.jpg" class="mainbg" />
+    <img src="../assets/img/bg1.png" class="mainbg" />
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <v-foot />
   </div>

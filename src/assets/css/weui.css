@@ -1,9 +1,10 @@
 .weui-cells__title {
-  color: #785a32 !important;
+  color: #563913 !important;
   font-size: 16px !important;
   margin-top: 0 !important;
   padding-top: 0;
   padding-bottom: 0;
+  font-weight: normal;
 }
 .weui-cell {
   padding: 5px 10px !important;

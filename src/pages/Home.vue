@@ -13,7 +13,7 @@
     <!-- <canvas ref="band"></canvas> -->
     <div class="canvas" id="home"></div>
     <v-foot color="#333" />
-    <img src="../assets/img/main1.png" class="mainbg" />
+    <img src="../assets/img/main2.png" class="mainbg" />
   </div>
 </template>
 <script>

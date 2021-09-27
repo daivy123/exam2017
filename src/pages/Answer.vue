@@ -130,7 +130,7 @@ export default {
   margin: 0;
   padding: 10px;
   color: #785a32;
-  background: url(../assets/img/bg1.jpg) 0 0 no-repeat;
+  background: url(../assets/img/bg1.png) 0 0 no-repeat;
   background-size: 100% 110%;
   height: 100%;
 }
@@ -151,7 +151,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   z-index: 2;
-  color: #c1af96;
+  color: #563913;
   font-size: 20px;
   background: #faf5f0;
   background-clip: padding-box;
