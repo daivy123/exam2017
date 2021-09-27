@@ -34,7 +34,7 @@ const state = {
     // randomQuestion: true, //问题随机
 
     questionNums, // 抽题数量
-    perScore: 2, // 每题得分
+    perScore: 4, // 每题得分
     useDept: true,
     isOnline: false, //实际活动
     showDocument: false,
