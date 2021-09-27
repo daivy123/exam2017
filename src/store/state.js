@@ -43,7 +43,7 @@ const state = {
     uid: 0,
     userName: "",
     cardNo: "",
-    dpt: [],
+    dpt: ['信息技术部'],
     isLogin: false,
     curScore: 0, // 上次答题得分
     maxTimes: 99999,
