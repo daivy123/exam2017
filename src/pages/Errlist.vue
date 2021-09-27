@@ -39,7 +39,7 @@ import util from "../lib/common";
 import * as db from "../lib/db";
 import * as R from "ramda"
 // 是否需要随机选项数据
-
+ console.log('question',question)
 export default {
   name: "page",
   components: {
@@ -48,6 +48,7 @@ export default {
     Checklist,
     XButton
   },
+ 
   data() {
     return {
       toast: {

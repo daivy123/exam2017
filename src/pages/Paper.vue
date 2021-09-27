@@ -21,6 +21,7 @@
         > -->
         <div style="position: relative">
           <div class="qa-num">{{ i + 1 }}/{{ questionList.length }}</div>
+          
           <div class="qa-body">
             <checklist
               v-if="question.answer.length > 1"
@@ -94,7 +95,7 @@ let questionList = [];
 let curPaper = window.localStorage.getItem(key.curPaper);
 
 if (curPaper == null) {
-  // console.log('curPaper')
+  // console.log('curPaper',curPaper)
   curPaper = questiones.slice(0, questionNums);
   questionList = curPaper;
   window.localStorage.setItem(key.curPaper, JSON.stringify(curPaper));
@@ -104,7 +105,7 @@ if (curPaper == null) {
 
 // 快速测试
 // questionList = questionList.slice(0, 3);
-// console.log(questionList)
+console.log(questionList)
 export default {
   name: "page",
   components: {
@@ -136,6 +137,7 @@ export default {
   computed: {
     ...mapState(["userInfo"]),
     questionList() {
+      console.log(questionList)
       return questionList;
     },
     sport: {
@@ -183,6 +185,7 @@ export default {
 
         let scorePerQuestion =
           curQuestion.score || this.$store.state.sport.perScore || 1;
+       
 
         // 多选答案校对
         let itemType = typeof item;

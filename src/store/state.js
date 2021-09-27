@@ -17,7 +17,7 @@ let isMobile = () => {
 
 // 答题时长，60分钟
 export const maxAnswerLength = 480 * 60;
-export const questionNums = 25; // 抽题数量
+export const questionNums = 10; // 抽题数量
 
 const state = {
   isLoading: false,
@@ -51,7 +51,7 @@ const state = {
     curTimeLength: 0, //当前答题时间
     // 最小抽奖得分
     minPrizeScore: 80,
-    testMode: false,
+    testMode: true,
     startDate: "2020-04-04",
     endDate: "2022-10-10 00:00:00",
     // 得分是否累加
