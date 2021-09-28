@@ -362,6 +362,17 @@ export const getCbpcSportDeptByMaxScore = async (sid) =>
     },
   });
 
+  /**
+ *   @database: { 微信开发 }
+ *   @desc:     { 党员参与情况 } 
+ */
+export const getCbpcSport2020Partyuser = sid =>
+axios({
+  url:   '/422/ff3b0ea9e4.json',
+  params: {
+    sid
+  },
+});
 /**
 *   @database: { 微信开发 }
 *   @desc:     { 我的错集 } 

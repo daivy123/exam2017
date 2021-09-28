@@ -11,10 +11,10 @@
         >
           <li
             class="dept-detail"
-            v-for="({ avg_score, rate, user_dpt }, i) in depts"
+            v-for="({ avg_score, rate, user_dpt,cpc_users }, i) in depts"
             :key="i"
           >
-            <span>{{ i + 1 }}.{{ user_dpt }}(参与率:{{ rate }}%)</span>
+            <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}名党员</span>
             <span>{{ avg_score }}分</span> 
           </li>
         </ul>
@@ -148,12 +148,14 @@ export default {
     },
     getDeptRatio() {
       if (this.sport.id != 35) {
-        var method = this.sport.readSumScore
-          ? "getCbpcSportMainByDept2"
-          : this.sport.stackMode
-          ? "getCbpcSportMainByDept"
-          : "getCbpcSportDeptByMaxScore";
-        method = 'getCbpcSportDeptByMaxScore';
+        // var method = this.sport.readSumScore
+        //   ? "getCbpcSportMainByDept2"
+        //   : this.sport.stackMode
+        //   ? "getCbpcSportMainByDept"
+        //   : "getCbpcSportDeptByMaxScore";
+        
+var        method = 'getCbpcSport2020Partyuser';
+
         db[method](this.sport.id).then(({ data }) => {
           this.depts = data;
         });
