@@ -276,7 +276,11 @@ export const getCbpcDepts = async (sid) =>
     params: {
       sid,
     },
-  });
+  }).then(res=>{
+    res.data = res.data.map(item=>([item.dept_name]))
+    console.log(res)
+    return res;
+  })
 
 /**
 *   @database: { 微信开发 }
