@@ -101,6 +101,9 @@ export default {
         });
       console.log(this.questionList);
     },
+    jump(router) {
+      this.$router.push(router);
+    },
     reload() {
       window.location.href = window.location.href.split("#")[0];
     },
