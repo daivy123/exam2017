@@ -205,7 +205,7 @@ export default {
         return;
       }
       this.sport.useDept = false;
-      let { data } = await db.getCbpmDeptList(this.sport.id);
+      let { data } = await db.getCbpcDepts(this.sport.id);
       this.dptList[0] = data;
       this.sport.useDept = true;
       this.loadUserInfo();
