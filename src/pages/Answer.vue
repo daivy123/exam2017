@@ -44,7 +44,8 @@ import { Group, Radio, Checklist, XButton } from "vux";
 
 import { mapState } from "vuex";
 
-import questionJSON from "../assets/data/party2021.js";
+// import questionJSON from "../assets/data/party2021.js";
+import questionJSON from "../assets/data/safe_uniq.js";
 
 import util from "../lib/common";
 
@@ -133,7 +134,7 @@ export default {
   margin: 0;
   padding: 10px;
   color: #785a32;
-  background: url(../assets/img/bg1.png) 0 0 no-repeat;
+  background: url(../assets/img/bg2021.jpg) 0 0 no-repeat;
   background-size: 100% 110%;
   height: 100%;
 }

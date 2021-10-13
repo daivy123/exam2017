@@ -1,5 +1,7 @@
 <template>
-  <footer :style="{ color }">{{ year }} &copy; 中国印钞造币总公司</footer>
+  <footer :style="{ color }"> 
+     <!-- {{ year }} &copy; 中国印钞造币总公司 -->
+     </footer>
 </template>
 <style lang="less" scoped>
 footer {

@@ -17,7 +17,7 @@ let isMobile = () => {
 
 // 答题时长，60分钟
 export const maxAnswerLength = 480 * 60;
-export const questionNums = 25; // 抽题数量
+export const questionNums = 20; // 抽题数量
 
 const state = {
   isLoading: false,
@@ -25,8 +25,12 @@ const state = {
   wxUrl: "//api.cbpc.ltd/",
   tips: "",
   sport: {
-    id: 44,
-    name: "学习贯彻习近平总书记“七一”重要讲话精神线上答题",
+    // id: 44,
+    // name: "学习贯彻习近平总书记“七一”重要讲话精神线上答题",
+    // orgname: "成都印钞有限公司", // 机构名
+    // slogan: "", // 口号
+    id: 45,
+    name: "“共建网络安全，共享网络文明”网络安全知识答题",
     orgname: "成都印钞有限公司", // 机构名
     slogan: "", // 口号
 

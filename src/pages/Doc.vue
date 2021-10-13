@@ -55,15 +55,15 @@
         </p>
 
         <!-- <p class="item" style="font-size:10pt;">(本部分将每次随机生成{{sport.questionNums}}题以供学习)</p> -->
-        <p class="subtitle" style="font-weight:bold;color:#e23;">知识学习</p>
-        <article>
+        <!-- <p class="subtitle" style="font-weight:bold;color:#e23;">知识学习</p> -->
+        <!-- <article>
           <p
             class="item"
             v-for="(question, i) in questions"
             :key="i"
             v-html="`${i + 1}.${question}`"
           ></p>
-        </article>
+        </article> -->
       </div>
       <confirm v-model="showConfirm" title="系统提示" @on-confirm="onConfirm">
         <p style="text-align: center">
@@ -82,8 +82,9 @@
 //   height: 100%;
 // }
 .content {
+  background: url(../assets/img/bg2021.jpg) 0 no-repeat;
   font-size: 13pt;
-  color: #444;
+  color: rgb(238, 227, 133);
   width: 100%;
   text-align: left;
   padding: 10px;
@@ -126,7 +127,8 @@
 </style>
 
 <script>
-import paper from "../assets/data/party2021.js";
+// import paper from "../assets/data/party2021.js";
+import paper from "../assets/data/safe_uniq.js";
 import util from "../lib/common";
 
 import { XButton, Confirm } from "vux";
@@ -249,9 +251,9 @@ export default {
         R.clone(paper).map(this.handleSrcQuestion);
     },
   },
-  mounted() {
-    this.init();
-    document.title = "知识学习";
-  },
+  // mounted() {
+  //   this.init();
+  //   document.title = "知识学习";
+  // },
 };
 </script>

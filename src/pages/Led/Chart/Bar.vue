@@ -43,7 +43,7 @@ export default {
       // let url = 'http://cbpc540.applinzi.com/index.php';
       let params = {
         s: "/addon/GoodVoice/GoodVoice/getRealScoreRate",
-        nums: 25,
+        nums: 20,
         perscore: this.sport.perScore, // parseInt(100 / this.sport.questionNums),
         sportid: this.sport.id
       };
