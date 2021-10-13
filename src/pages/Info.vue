@@ -30,7 +30,7 @@
         >查看正确答案</x-button
       >
       <x-button class="btn" @click.native="scoreList">得分排行榜</x-button>
-      <x-button class="btn" @click.native="jump('errlist')">我的错题集</x-button>
+      <!-- <x-button class="btn" @click.native="jump('errlist')">我的错题集</x-button> -->
     </div>
     <confirm v-model="showConfirm" title="系统提示" @on-confirm="onConfirm">
       <p style="text-align: center;">

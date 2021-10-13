@@ -34,7 +34,8 @@
         </div>
       </div>
       <div class="submit" v-if="i == questionList.length - 1">
-        <x-button type="primary" @click.native="reload">重新答题</x-button>
+        <!-- <x-button type="primary" @click.native="reload">重新答题</x-button> -->
+        <x-button type="primary" @click.native="jump('/doc')">重新答题</x-button>
       </div>
     </div>
   </div>
@@ -105,9 +106,9 @@ export default {
     jump(router) {
       this.$router.push(router);
     },
-    reload() {
-      window.location.href = window.location.href.split("#")[0];
-    },
+    // reload() {
+    //   // window.location.href = window.location.href.split("#")[0];
+    // },
     getErrDetail() {
       let e = window.localStorage.getItem("error_detail");
       if (e != null) {

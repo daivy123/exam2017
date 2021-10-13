@@ -14,7 +14,8 @@
             v-for="({ avg_score, rate, user_dpt,cpc_users }, i) in depts"
             :key="i"
           >
-            <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}名党员</span>
+            <!-- <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}名党员</span> -->
+            <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}安全保密人员</span>
             <span>{{ avg_score }}分</span> 
           </li>
         </ul>
@@ -22,6 +23,11 @@
           <x-button @click.native="showAll">显示全部</x-button>
         </div>
       </div>
+
+
+      <!-- 党史答题,党员和非党员排名 -->
+
+<!--       
       <h3>2.党员得分排名(参与人数:{{ total.cpc }})</h3>
       <ul class="dept-rate">
         <li
@@ -101,7 +107,7 @@
             </div>
           </div>
         </li>
-      </ul>
+      </ul> -->
     </div>
     <v-foot color="#333" />
   </div>

@@ -38,7 +38,8 @@
             <!-- (限时{{ sport.maxAnswerLength / 60 }}分钟) -->
           </x-button>
 
-          <x-button @click.native="jump('errlist')">我的错题集</x-button>
+          <!-- <x-button @click.native="jump('errlist')">我的错题集</x-button> -->
+          <x-button @click.native="jump('/answer')">我的错题集</x-button>
 
           <x-button @click.native="jump('/score')">答题情况汇总</x-button>
 

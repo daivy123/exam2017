@@ -11,14 +11,14 @@
     </div>
     <toast v-model="toast.show">{{ toast.msg }}</toast>
     <!-- <canvas ref="band"></canvas> -->
-    <!-- <div class="canvas" id="home"></div> -->
+    <div class="canvas" id="home"></div>
     <v-foot color="#333" />
     <img src="../assets/img/main.jpg" class="mainbg" />
   </div>
 </template>
 <script>
-// import particles from "particles.js";
-// import particlesSetting from "../lib/particlesSetting";
+import particles from "particles.js";
+import particlesSetting from "../lib/particlesSetting";
 
 import { XButton, Toast } from "vux";
 
@@ -265,7 +265,7 @@ export default {
   mounted() {
     // this.animateCanvas();
     this.loadUserInfo();
-    // particlesJS("home", particlesSetting);
+    particlesJS("home", particlesSetting);
     document.title = this.sport.name; //+ "微信答题";
   },
 };
