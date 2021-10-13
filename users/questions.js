@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-const R =require('ramda')
+const R = require("ramda");
 
 const getOneQuestions = async () =>
   axios
@@ -23,12 +23,28 @@ async function main() {
   fs.writeFileSync("./safe.json", str, "utf-8");
 }
 
-const uniqFile =async ()=>{
-    const str  = fs.readFileSync('./safe.json','utf-8')
-    let res = JSON.parse(str)
-    res = R.flatten(res)
-    console.log(res.length)
-}
+const uniqFile = async () => {
+  const str = fs.readFileSync("./safe.json", "utf-8");
+  let res = JSON.parse(str);
+  res = R.flatten(res);
 
+  let nextQuestions = res.map((item) => {
+    let answer = [];
+    let obj = {
+      id: item.id,
+      title: item.question.replace(/\d\d\d\.|\d\d\.|\d\./,''),
+      option: item.list.map((option) => option.value),
+    };
+    item.list.forEach((opt, i) => {
+      if (opt.right) {
+        answer.push(i);
+      }
+    });
+    return { ...obj, answer };
+  });
+  let uniq = R.uniqBy(R.prop('id'),nextQuestions)
+  uniq = uniq.map(({id,...item})=>item)
+  fs.writeFileSync("./safe_uniq.json", JSON.stringify(uniq), "utf-8");
+};
 
-uniqFile()
+uniqFile();
