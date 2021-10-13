@@ -105,8 +105,7 @@ export default {
       this.$router.push(router);
     },
     reload() {
-      // window.location.href = window.location.href.split("#")[0] + "#login";
-      this.jump("/doc");
+      window.location.href = window.location.href.split("#")[0];
     },
     getErrDetail() {
       let e = window.localStorage.getItem("error_detail");
