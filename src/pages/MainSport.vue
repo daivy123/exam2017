@@ -6,16 +6,20 @@
           background: rgba(255, 255, 255, 0.3);
           padding: 12px;
           border-radius: 5px;
-          margin-top: 90px;
+          margin-top: 25px;
           font-size: 15px;
         "
       >
-        <p style="text-indent: 2em">
+        <!-- <p style="text-indent: 2em">
           为进一步推进党史学习教育走深走实，深化对党的光辉历程的学习掌握，教育引导广大党员、干部、群众坚定理想信念、坚守为民宗旨、继承建党精神，强化使命担当，现特在全公司范围开展“凝聚成钞力量
           传承时代精神”
           ——学习贯彻习近平总书记“七一”重要讲话精神线上答题。请大家认真学习习近平总书记在庆祝中国共产党成立100周年大会上的重要讲话，在规定时间内完成答题。
+        </p> -->
+           <p class="font" style="text-indent: 2em">
+         为深入宣传贯彻习近平总书记网络强国战略思想,进一步提升广大职工网络安全防范意识和技能,教育引导广大职工遵守国家网络安全法律法规,营造安全、健康、文明的网络环境,请大家积极参与"共建网络安全，共享网络文明”
+网络安全知识答题活动。
         </p>
-        <p style="text-align: right"><br />党委宣传部<br />2021年9月29日</p>
+        <p class="font" style="text-align: right;"><br />信息技术部<br />2021年10月15日</p>
       </div> <br/>
       <div class="login">
         <x-button
@@ -226,6 +230,15 @@ export default {
   color: #333;
   width: 100%;
   justify-content: center;
+  .font{
+    letter-spacing: 1.5px;
+    caret-color: red;
+    color: rgb(235, 232, 91);
+    font-size: 15px;
+    font-family: 宋体, SimSun;
+    font-weight: bolder;
+
+  }
   .title {
     font-size: 16pt;
     text-align: center;
