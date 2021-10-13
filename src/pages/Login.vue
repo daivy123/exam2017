@@ -173,7 +173,8 @@ export default {
         return;
       }
 
-      this.jump("main_sport");
+      // this.jump("main_sport");
+      this.jump("/doc");
     },
     // 更新头像信息
     updateUserInfo(uid, userInfo) {
