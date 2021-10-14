@@ -4,19 +4,19 @@
     <div class="content">
       <h3 v-if="showDept" style="margin-top: 30px">1.各单位平均得分</h3>
       <div class="dept-score" :class="{ hideSome: !isShowFull }">
-        <ul
-          v-if="showDept"
-          class="dept-rate"
-          :class="{ hideHalf: !isShowFull }"
-        >
+        <ul v-if="showDept" class="dept-rate" :class="{ hideHalf: !isShowFull }">
           <li
             class="dept-detail"
             v-for="({ avg_score, rate, user_dpt,cpc_users }, i) in depts"
             :key="i"
           >
             <!-- <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}名党员</span> -->
-            <span>{{ i + 1 }}.{{ user_dpt }}<br/>参与率:{{ rate }}%,{{cpc_users}}安全保密人员</span>
-            <span>{{ avg_score }}分</span> 
+            <span>
+              {{ i + 1 }}.{{ user_dpt }}
+              <br />
+              参与率:{{ rate }}%,{{cpc_users}}保密人员
+            </span>
+            <span>{{ avg_score }}分</span>
           </li>
         </ul>
         <div :class="{ hideButton: isShowFull }" class="btn-showall">
@@ -24,10 +24,9 @@
         </div>
       </div>
 
-
       <!-- 党史答题,党员和非党员排名 -->
 
-<!--       
+      <!--       
       <h3>2.党员得分排名(参与人数:{{ total.cpc }})</h3>
       <ul class="dept-rate">
         <li
@@ -107,7 +106,7 @@
             </div>
           </div>
         </li>
-      </ul> -->
+      </ul>-->
     </div>
     <v-foot color="#333" />
   </div>
@@ -124,7 +123,7 @@ const FemaleSport = false;
 export default {
   components: {
     VHeader,
-    XButton,
+    XButton
   },
   data() {
     return {
@@ -132,20 +131,20 @@ export default {
       users: [],
       total: {
         cpc: 0,
-        not_cpc: 0,
+        not_cpc: 0
       },
       showDept: !FemaleSport,
-      isShowFull: false,
+      isShowFull: false
     };
   },
   computed: {
     ...mapState(["sport"]),
     user_cpc() {
-      return this.users.filter((item) => item.is_cpc == 1);
+      return this.users.filter(item => item.is_cpc == 1);
     },
     user_not_cpc() {
-      return this.users.filter((item) => item.is_cpc != 1);
-    },
+      return this.users.filter(item => item.is_cpc != 1);
+    }
   },
   methods: {
     showAll() {
@@ -159,8 +158,8 @@ export default {
         //   : this.sport.stackMode
         //   ? "getCbpcSportMainByDept"
         //   : "getCbpcSportDeptByMaxScore";
-        
-var        method = 'getCbpcSport2020Partyuser';
+
+        var method = "getCbpcSport2020Partyuser";
 
         db[method](this.sport.id).then(({ data }) => {
           this.depts = data;
@@ -174,7 +173,7 @@ var        method = 'getCbpcSport2020Partyuser';
     getScoreList() {
       if (this.sport.id == 35) {
         db.getCbpcSport2020ScorePurchase(this.sport.id).then(({ data }) => {
-          this.users = data.map((item) => {
+          this.users = data.map(item => {
             let { total_time } = item;
             return item;
           });
@@ -186,7 +185,7 @@ var        method = 'getCbpcSport2020Partyuser';
           ? "getCbpcSportMainByUser"
           : "getCbpcSportMainByMaxScore"
       ]({ sid: this.sport.id, limit: 500 }).then(({ data }) => {
-        this.users = data.map((item) => {
+        this.users = data.map(item => {
           let { total_time } = item;
           total_time = parseInt(total_time, 10);
           let h = Math.floor(total_time / 3600);
@@ -203,12 +202,12 @@ var        method = 'getCbpcSport2020Partyuser';
       });
     },
     getTotal() {
-      db.getCbpcSport2020CPCUsers(this.sport.id).then((data) => {
-        var cpc = data.find((item) => item.is_cpc == 1) || { users: 0 };
-        var not_cpc = data.find((item) => item.is_cpc == 0) || { users: 0 };
+      db.getCbpcSport2020CPCUsers(this.sport.id).then(data => {
+        var cpc = data.find(item => item.is_cpc == 1) || { users: 0 };
+        var not_cpc = data.find(item => item.is_cpc == 0) || { users: 0 };
         this.total = {
           cpc: cpc.users,
-          not_cpc: not_cpc.users,
+          not_cpc: not_cpc.users
         };
       });
     },
@@ -218,11 +217,11 @@ var        method = 'getCbpcSport2020Partyuser';
       }
       this.getScoreList();
       this.getTotal();
-    },
+    }
   },
   mounted() {
     this.init();
-  },
+  }
 };
 </script>
 
