@@ -37,7 +37,7 @@ import { mapState } from "vuex";
 import questionJSON from "../assets/data/safe_uniq.js";
 import util from "../lib/common";
 import * as db from "../lib/db";
-import * as R from "ramda"
+import * as R from "ramda";
 // 是否需要随机选项数据
 
 export default {
@@ -48,7 +48,7 @@ export default {
     Checklist,
     XButton
   },
- 
+
   data() {
     return {
       toast: {
@@ -95,11 +95,11 @@ export default {
       let getAnswer = a => ["A", "B", "C", "D", "E", "F", "G"][a];
       let err_detail = this.error_detail.map(({ id }) => id);
 
-      let questionList = err_detail.map(i => questionJSON[i]);
+      let tmpList = err_detail.map(i => questionJSON[i]).filter(item => item);
 
-      this.questionList = R.clone(questionList)
+      this.questionList = R.clone(tmpList);
+      this.questionList
         .map((item, id) => {
-          // console.log(item);
           item.answer =
             typeof item.answer == "number" ? [item.answer] : item.answer;
           item.answerText = item.answer.map(getAnswer);
@@ -109,7 +109,6 @@ export default {
           return item;
         })
         .sort((a, b) => b.err_num - a.err_num);
-      // console.log(this.questionList);
     },
     reload() {
       // window.location.href = window.location.href.split("#")[0] + "#login";
@@ -184,7 +183,7 @@ export default {
   margin: 0;
   padding: 10px;
   color: #785a32;
-  background: url(../assets/img/bg1.png) 0 0 no-repeat;
+  background: url(../assets/img/bg2021.jpg) 0 0 no-repeat;
   background-size: 100% 110%;
   height: 100%;
 }
